@@ -3,6 +3,7 @@
 The Climber Fitness Tracker is a way to store and access workout data for climbing workouts. Coaches will be able to view all athletes' workout data, and each athlete will be able to see their own workouts. 
 
 Technologies used:
+
 -Node
 -MongoDB
 -Express
