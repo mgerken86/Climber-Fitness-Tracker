@@ -17,9 +17,55 @@ Users will be able to sign up and log in after entering their basic information.
 Coaches will be authorized to view all of their athletes' workouts. They can view changes and trends in athlete benchmarks to help formulate a training plan for each athlete. 
 
 
-
+The Wireframes:
 
 ![](public/images/Project2-wireframes.jpg)
 
 
 The ERD: 
+
+![](public/images/ERD.jpg)
+
+
+Route Table:
+
+Log-in
+Create athlete
+
+Athlete index
+Athlete show
+Athlete update
+Athlete delete
+
+Workout index
+Create workout
+Edit workout
+Show workout
+Delete workout
+
+
+MVP Requirements: 
+
+Athletes will be able to sign up / sign in and add workouts to their show page. They will be able to track all of their previous workouts and edit/delete as necessary
+
+Coaches will be able to sign up / sign in and view all athletes and their individual workouts
+
+
+Stretch Goals:
+
+Have 3 different types of workouts:
+    [] Strength benchmarks
+    [] Physical measurements
+    [] Training log
+
+Create a tracker that visualizes benchmark progress (graph, chart, etc). Alerts coach if 1 of the 4 benchmarks has decreased by a certain percentage
+
+Make it possible for athletes to share their benchmarks with other athletes if they want to
+
+Arrange athletes by teams to make it easier for coaches to organize them
+
+Make it easy to search for individual athletes
+
+Use an API to get the athlete's membership info? Get their image?
+
+Make it possible for coaches to send athletes individual messages
