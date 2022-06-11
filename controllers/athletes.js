@@ -3,13 +3,13 @@ const Athlete = require('../models/athlete')
 
 // CREATE ROUTE
 
-const router = express.Router()
+const athletesRouter = express.Router()
 
 
 // ROUTES
 
 // index route 
-router.get('/', (req, res) =>{
+athletesRouter.get('/', (req, res) =>{
     //find all the athletes
     Athlete.find({})
     .then(athletes => {
@@ -19,18 +19,18 @@ router.get('/', (req, res) =>{
 })
 
 // new route
-router.get('/new', (req, res) => res.render('athletes/new.liquid'))
+athletesRouter.get('/new', (req, res) => res.render('athletes/new.liquid'))
 
 
 // delete route
-router.delete('/:id', (req, res) => {
+athletesRouter.delete('/:id', (req, res) => {
     Athlete.findByIdAndDelete(req.params.id)
     .then(athlete => res.redirect('/athletes'))
     .catch(error => console.log(error))
 })
 
 //update route
-router.put('/:id', (req, res) => {
+athletesRouter.put('/:id', (req, res) => {
     const id = req.params.id
     Athlete.findByIdAndUpdate(id, req.body, {new: true})
     .then(athlete => res.redirect(`/athletes/${id}`))
@@ -38,24 +38,24 @@ router.put('/:id', (req, res) => {
 })
 
 // create route
-router.post('/', (req, res) => {
+athletesRouter.post('/', (req, res) => {
     const athlete = req.body
     Athlete.create(athlete)
     .then(athlete => {
-        res.redirect('/athlete')
+        res.redirect('/athletes')
     })
     .catch(error => console.log(error)) 
 })
 
 // edit route
-router.get('/:id/edit', (req, res) => {
+athletesRouter.get('/:id/edit', (req, res) => {
     Athlete.findById(req.params.id)
     .then(product => res.render('athletes/edit.liquid', {athlete}))
     .catch(error => console.log(error))
 })
 
 // show route
-router.get('/:id', (req, res) => {
+athletesRouter.get('/:id', (req, res) => {
     Athlete.findById(req.params.id)
     .then(athlete => res.render('athletes/show.liquid', {athlete}))
     .catch(error => console.log(error))
@@ -65,4 +65,4 @@ router.get('/:id', (req, res) => {
 
 
 // export router to server.js
-module.exports = router
+module.exports = athletesRouter

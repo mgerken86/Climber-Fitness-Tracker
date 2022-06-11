@@ -5,7 +5,7 @@ const { Schema, model } = mongoose
 
 //athlete schema
 const athletesSchema = new Schema({
-    firstName: {String, required: true},
+    firstName: { type: String, required: true},
     birthday: Date,
     img: String,
     workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
