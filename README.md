@@ -25,7 +25,7 @@ The Wireframes:
 
 The ERD: 
 
-![](public/images/ERD.jpg)
+![](public/images/Project2-ERD.drawio.png)
 
 
 Route Table:

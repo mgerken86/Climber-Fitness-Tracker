@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const mongoose = require("./models/connection");
 const path = require("path");
 const athletesRouter = require("./controllers/athletes");
+const workoutsRouter = require("./controllers/workouts");
 
 /////////////////////////////////////////////////
 // Create Express Application Object Bind Liquid Templating Engine
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true })); // parse urlencoded request bod
 app.use(express.static("public")); // serve files from public statically
 
 app.use('/athletes', athletesRouter)
+app.use('/workouts', workoutsRouter)
 
 
 // Listen Route
