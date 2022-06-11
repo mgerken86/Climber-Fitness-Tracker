@@ -1,4 +1,4 @@
-const mongoose = require('./connection')
+const mongoose = require('../controllers/connection')
 
 // MODELS
 const { Schema, model } = mongoose
@@ -6,6 +6,7 @@ const { Schema, model } = mongoose
 //athlete schema
 const athletesSchema = new Schema({
     firstName: { type: String, required: true},
+    lastName: { type: String, required: true},
     birthday: Date,
     img: String,
     workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
