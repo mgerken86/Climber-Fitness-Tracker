@@ -32,8 +32,45 @@ Route Table:
 
 <table>
     <tr>
-        <td>Hello</td>
+        <th>HTTP Method</th>
+        <th>Path</th>
+        <th>CRUD Operation</th>
+    </tr>
     <tr>
+      <td>GET</td>  
+      <td>/createUser</td>  
+      <td>Create an athlete or coach</td>  
+    </tr>
+    <tr>
+      <td>GET</td>  
+      <td>/login</td>  
+      <td>Sign in</td>  
+    </tr>
+    <tr>
+      <td>GET</td>  
+      <td>/athletes</td>  
+      <td>Athletes index page</td>  
+    </tr>
+    <tr>
+      <td>GET</td>  
+      <td>/athletes/:id</td>  
+      <td>Athlete show page</td>  
+    </tr>
+    <tr>
+      <td>GET</td>  
+      <td>/athletes/:id/workouts</td>  
+      <td>Workouts index page for the athlete</td>  
+    </tr>
+    <tr>
+      <td>GET</td>  
+      <td>/athletes/:id/workouts/new</td>  
+      <td>Create a new workout to the athlete</td>  
+    </tr>
+    <tr>
+      <td>POST</td>  
+      <td>/athletes/:id</td>  
+      <td>Add new workout to athlete</td>  
+    </tr>
 </table>
 
 
