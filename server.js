@@ -9,6 +9,7 @@ const mongoose = require("./controllers/connection");
 const path = require("path");
 const athletesRouter = require("./controllers/athletes");
 const workoutsRouter = require("./controllers/workouts");
+const usersRouter = require('./controllers/users')
 
 /////////////////////////////////////////////////
 // Create Express Application Object Bind Liquid Templating Engine
@@ -23,6 +24,7 @@ app.use(express.static("public")); // serve files from public statically
 
 app.use('/athletes', athletesRouter)
 app.use('/workouts', workoutsRouter)
+app.use('/users', usersRouter)
 
 
 // Listen Route

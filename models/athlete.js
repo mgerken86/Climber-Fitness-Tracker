@@ -1,12 +1,12 @@
 const mongoose = require('../controllers/connection')
-const User = require('./user')
+const {userSchema} = require('./user')
 
 // MODELS
 const { Schema, model } = mongoose
 
 //athlete schema
 const athletesSchema = new Schema({
-    userDetails: User,
+    userDetails: userSchema,
     firstName: { type: String, required: true},
     lastName: { type: String, required: true},
     birthday: Date,
@@ -16,5 +16,6 @@ const athletesSchema = new Schema({
 
 // athlete model
 const Athlete = model('Athlete', athletesSchema)
+
 
 module.exports = Athlete
