@@ -30,19 +30,11 @@ The ERD:
 
 Route Table:
 
-Log-in
-Create athlete
-
-Athlete index
-Athlete show
-Athlete update
-Athlete delete
-
-Workout index
-Create workout
-Edit workout
-Show workout
-Delete workout
+<table>
+    <tr>
+        <td>Hello</td>
+    <tr>
+</table>
 
 
 MVP Requirements: 
