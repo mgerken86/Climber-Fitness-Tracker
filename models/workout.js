@@ -5,11 +5,12 @@ const { Schema, model } = mongoose
 
 //athlete schema
 const workoutSchema = new Schema({
-    date: Date,
+    createdAt: {type: Date, default: Date.now},
     maxFinger: Number,
     maxPullup: Number,
     core: Number,
-    endurance: Number
+    endurance: Number,
+    athlete: {type: Schema.Types.ObjectId, ref: 'Athlete', required: true}
 })
 
 // athlete model
