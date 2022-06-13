@@ -40,6 +40,7 @@ workoutsRouter.put('/:id', (req, res) => {
 // create route
 workoutsRouter.post('/', (req, res) => {
     const workout = req.body
+    console.log(workout)
     Workout.create(workout)
     .then(workout => {
         res.redirect('/workouts')

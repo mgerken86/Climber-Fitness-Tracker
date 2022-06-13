@@ -9,8 +9,8 @@ const workoutSchema = new Schema({
     maxFinger: Number,
     maxPullup: Number,
     core: Number,
-    endurance: Number,
-    athlete: {type: Schema.Types.ObjectId, ref: 'Athlete', required: true}
+    endurance: Number
+    // athlete: {type: Schema.Types.ObjectId, ref: 'Athlete', required: true}
 })
 
 // athlete model
