@@ -1,3 +1,25 @@
 {% layout "layout.liquid" %} {% block content %}
     <h1>Workouts Index Route</h1>
+
+    <h2>Workouts:</h2>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Finger Strength</th>
+            <th>Max Pullup </th>
+            <th>Core</th>
+            <th>Endurance</th>
+            <th>Total Score</th>
+        </tr>
+        {% for workout in workouts %}
+        <tr>
+            <td>{{ workout.createdAt }}</td>
+            <td>{{ workout.maxFinger }} </td>
+            <td>{{ workout.maxPullup }}</td>
+            <td>{{ workout.core }}</td>
+            <td>{{ workout.endurance }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
