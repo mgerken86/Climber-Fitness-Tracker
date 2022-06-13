@@ -10,20 +10,21 @@
 // const { Schema, model } = mongoose
 
 // // make user schema
-// const userSchema = new Schema({
-//     username: { type: String, required: true, unique: true },
-//     password: { type: String, required: true },
-//     role: { type: String, required: true }, // this is for whether or not you're a coach or an athlete
+// const teamSchema = new Schema({
+//     name: { type: String, required: true, unique: true },
+//     ageRange: { type: Number, required: true },
+//     competitionDivision: { type: String, required: true },
+//     athletes: [{type: Schema.Types.ObjectId}]
 // })
 
 // // user model
-// const User = model('User', userSchema)
+// const Team = model('Team', teamSchema)
 
 
 // ///////////////////////////////////////////////////
 // // Export Model
 // ///////////////////////////////////////////////////
 // module.exports = {
-//     userSchema: userSchema,
-//     User: User
+//     teamSchema: teamSchema,
+//     Team: Team
 // }

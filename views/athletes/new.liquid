@@ -1,3 +1,17 @@
 {% layout "layout.liquid" %} {% block content %}
-    <h1>Athletes New Route</h1>
+<div>
+  <form action="/athletes" method="POST">
+    <fieldset>
+      <legend>New User</legend>
+      <label>First Name: <input type="text" name="firstName" required /> </label>
+      <label
+        >Last Name: <input type="text" name="lastName" required />
+      </label>
+      <label>
+        Birthday: <input type="date" name="birthday" required />
+      </label>
+      <input type="submit" value="Create Athlete" />
+    </fieldset>
+  </form>
+</div>
 {% endblock %}

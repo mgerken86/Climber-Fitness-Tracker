@@ -1,3 +1,24 @@
-{% layout "layout.liquid" %} {% block content %}
-    <h1>Workouts New Route</h1>
+{% layout 'layout.liquid' %} {% block content %}
+<div class="container">
+    <article>
+        <form action="/workouts" method="POST">
+            <fieldset>
+                <legend>Test Your Strength!</legend>
+                <label>
+                    Max Finger Strength:<input type="text" name="maxFinger" placeholder="Points scored" />
+                </label>
+                <label>
+                    Max Pull-up:<input type="text" name="maxPullup" placeholder="Points scored" />
+                </label>
+                <label>
+                    Core:<input type="text" name="core" placeholder="Points scored" />
+                </label>
+                <label>
+                    Endurance:<input type="text" name="endurance" placeholder="Points scored"/>
+                </label>
+            </fieldset>
+            <input type="submit" value="Find My Climbing Grade" />
+        </form>
+    </article>
+</div>
 {% endblock %}

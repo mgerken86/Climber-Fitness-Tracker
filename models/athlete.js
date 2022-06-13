@@ -1,12 +1,12 @@
 const mongoose = require('../controllers/connection')
-const {userSchema} = require('./user')
+// const {userSchema} = require('./user')
 
 // MODELS
 const { Schema, model } = mongoose
 
 //athlete schema
 const athletesSchema = new Schema({
-    userDetails: userSchema,
+    // userDetails: userSchema,
     firstName: { type: String, required: true},
     lastName: { type: String, required: true},
     birthday: Date,

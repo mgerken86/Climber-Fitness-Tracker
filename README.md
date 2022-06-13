@@ -97,5 +97,6 @@ Arrange athletes by teams to make it easier for coaches to organize them
 Make it easy to search for individual athletes
 
 Use an API to get the athlete's membership info? Get their image?
+ Use an API to get gym info from google maps?
 
 Make it possible for coaches to send athletes individual messages
