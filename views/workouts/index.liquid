@@ -11,6 +11,7 @@
             <th>Core</th>
             <th>Endurance</th>
             <th>Total Score</th>
+            <th>Delete Workout</th>
         </tr>
         {% for workout in workouts %}
         <tr>
@@ -22,6 +23,11 @@
             <!-- {% assign totalScore =  %} -->
             <td>{{ workout.maxFinger | plus: workout.maxPullup | plus:
                 workout.core | plus: workout.endurance }}</td>
+                <td>
+                    <form action="/workouts/{{ workout._id }}?_method=DELETE" method="POST">
+                        <input class="btn btn-default" type="submit" value="X" />
+                    </form>
+                </td>   
         </tr>
         {% endfor %}
     </table>

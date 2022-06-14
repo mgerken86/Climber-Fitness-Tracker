@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { findById } = require('../models/athlete');
 const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
 
@@ -39,19 +40,18 @@ athletesRouter.delete('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//update route
-// athletesRouter.put('/:id', (req, res) => {
-//     const athleteId = req.params.id
-//     console.log(athleteId)
-//     // const workoutId = req.body._id
-//     // console.log(req.body._id)
-//     // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
-//     Athlete.findByIdAndUpdate(athleteId, req.body, {new: true})
-//     .then(athlete => {
-//         res.redirect(`/athletes/${athleteId}`)
-//     })
-//     .catch(error => console.log(error))
-// })
+// update route
+athletesRouter.put('/:id', (req, res) => {
+    const athleteId = req.params.id
+    // const workoutId = req.body._id
+    // console.log(req.body._id)
+    // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
+    Athlete.findByIdAndUpdate(athleteId, req.body, {new: true})
+    .then(athlete => {
+        res.redirect(`/athletes/${athleteId}`)
+    })
+    .catch(error => console.log(error))
+})
 
 
 // create route
@@ -66,10 +66,12 @@ athletesRouter.post('/', (req, res) => {
 
 // create route for adding workouts
 athletesRouter.post('/:id', (req, res) => {
-    athleteId = req.params.id
+    const athleteId = req.params.id
+    console.log(athleteId)
     Workout.create(req.body)
+    
     .then(workout => {
-        Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workout._id}}, {new: true})
+        return Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workout._id}}, {new: true})
     })
     .then(athlete => {
         console.log(athlete)
@@ -96,6 +98,7 @@ athletesRouter.get('/:id/edit', (req, res) => {
 // show route
 athletesRouter.get('/:id', (req, res) => {
     Athlete.findById(req.params.id)
+    .populate('workouts')
     .then(athlete => res.render('athletes/show.liquid', {athlete}))
     .catch(error => console.log(error))
 })

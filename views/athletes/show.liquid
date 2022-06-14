@@ -3,9 +3,13 @@
     <div class="flex-container">
     <a class="btn btn-default" href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
     <a class="btn btn-default" href="/workouts/{{athlete._id}}/new">Add a new workout for {{athlete.firstName}}</a>
-    <form action="/athletes/{{ athlete._id }}?_method=DELETE" method="POST">
-        <input class="btn btn-default" type="submit" value="Delete {{athlete.firstName}}" />
-      </form>
     </div>
-    <h2>Workouts: {{ athlete.workouts }}</h2>
+    <h2>Workouts:</h2>
+    <table class="table">
+    {% for workout in athlete.workouts %}
+    <p>Date: {{workout.createdAt}} <br>
+    Total Score: {{workout.maxFinger | plus: workout.maxPullup | plus:
+        workout.core | plus: workout.endurance}}</p>
+    {% endfor %}
+</table>
 {% endblock %}
