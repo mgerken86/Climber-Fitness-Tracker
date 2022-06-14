@@ -36,7 +36,7 @@ athletesRouter.put('/:id', (req, res) => {
     // const workoutId = req.body._id
     // console.log(req.body._id)
     // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
-    Athlete.findByIdAndUpdate(athleteId, rec.body, {new: true})
+    Athlete.findByIdAndUpdate(athleteId, req.body, {new: true})
     .then(athlete => {
         res.redirect(`/athletes/${athleteId}`)
     })
@@ -62,12 +62,12 @@ athletesRouter.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// add workout route
-athletesRouter.get('/:id/addWorkout', (req, res) => {
-    Athlete.findById(req.params.id)
-    .then(athlete => res.render('workouts/new.liquid', {athlete}))
-    .catch(error => console.log(error))
-})
+// // add workout route
+// athletesRouter.get('/:id/addWorkout', (req, res) => {
+//     Athlete.findById(req.params.id)
+//     .then(athlete => res.render('workouts/new.liquid', {athlete}))
+//     .catch(error => console.log(error))
+// })
 
 // show route
 athletesRouter.get('/:id', (req, res) => {

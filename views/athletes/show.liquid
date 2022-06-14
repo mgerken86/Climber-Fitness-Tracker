@@ -3,6 +3,10 @@
     <a href="/athletes">Back to Athletes List</a>
     <h2>workouts: {{ athlete.workouts }}</h2>
     <a href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
-    <br>
+    <br><br>
     <a href="/workouts/{{athlete._id}}/new">Add a new workout</a>
+    <br><br><br>
+    <form action="/athletes/{{ athlete._id }}?_method=DELETE" method="POST">
+        <input type="submit" value="Delete {{athlete.firstName}}" />
+      </form>
 {% endblock %}
