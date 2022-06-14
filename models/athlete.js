@@ -9,7 +9,7 @@ const athletesSchema = new Schema({
     // userDetails: userSchema,
     firstName: { type: String, required: true},
     lastName: { type: String, required: true},
-    birthday: Date,
+    birthday: {type: Date, max: Date.now},
     img: String,
     workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
 })

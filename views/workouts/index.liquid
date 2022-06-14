@@ -19,6 +19,9 @@
             <td>{{ workout.maxPullup }}</td>
             <td>{{ workout.core }}</td>
             <td>{{ workout.endurance }}</td>
+            <!-- {% assign totalScore =  %} -->
+            <td>{{ workout.maxFinger | plus: workout.maxPullup | plus:
+                workout.core | plus: workout.endurance }}</td>
         </tr>
         {% endfor %}
     </table>

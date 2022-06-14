@@ -32,10 +32,15 @@ athletesRouter.delete('/:id', (req, res) => {
 //update route
 athletesRouter.put('/:id', (req, res) => {
     const id = req.params.id
-    Athlete.findByIdAndUpdate(id, req.body, {new: true})
-    .then(athlete => res.redirect(`/athletes/${id}`))
+    Athlete.findByIdAndUpdate(id, {$push: {workouts: req.body}}, {new: true})
+    .then(athlete => {
+        res.redirect(`/athletes/${id}`)
+        console.log(athlete)
+        console.log(athlete.workouts)
+    })
     .catch(error => console.log(error))
 })
+
 
 // create route
 athletesRouter.post('/', (req, res) => {
@@ -47,10 +52,18 @@ athletesRouter.post('/', (req, res) => {
     .catch(error => console.log(error)) 
 })
 
+
 // edit route
 athletesRouter.get('/:id/edit', (req, res) => {
     Athlete.findById(req.params.id)
-    .then(product => res.render('athletes/edit.liquid', {athlete}))
+    .then(athlete => res.render('athletes/edit.liquid', {athlete}))
+    .catch(error => console.log(error))
+})
+
+// add workout route
+athletesRouter.get('/:id/addWorkout', (req, res) => {
+    Athlete.findById(req.params.id)
+    .then(athlete => res.render('workouts/new.liquid', {athlete}))
     .catch(error => console.log(error))
 })
 
@@ -61,7 +74,7 @@ athletesRouter.get('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-
+//
 
 
 // export router to server.js

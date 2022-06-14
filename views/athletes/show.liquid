@@ -1,4 +1,5 @@
 {% layout "layout.liquid" %} {% block content %}
     <h1> {{athlete.firstName }}</h1>
-    <a href=""></a>
+    <h2>workouts: {{ athlete.workouts }}</h2>
+    <a href="/athletes/{{athlete._id}}/addWorkout">Add a new workout</a>
 {% endblock %}

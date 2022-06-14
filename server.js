@@ -8,7 +8,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 const athletesRouter = require("./controllers/athletes");
 const workoutsRouter = require("./controllers/workouts");
-const usersRouter = require('./controllers/users')
+// const usersRouter = require('./controllers/users')
 
 /////////////////////////////////////////////////
 // Create Express Application Object Bind Liquid Templating Engine

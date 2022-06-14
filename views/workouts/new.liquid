@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %} {% block content %}
 <div class="container">
     <article>
-        <form action="/workouts" method="POST">
+        <form action="/athletes/{{athlete._id}}?_method=PUT" method="PUT">
             <fieldset>
                 <legend>Test Your Strength!</legend>
                 <label>
