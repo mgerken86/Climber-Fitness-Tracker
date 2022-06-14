@@ -5,6 +5,15 @@ const Athlete = require('../models/athlete')
 
 const athletesRouter = express.Router()
 
+// Authorization Middleware
+athletesRouter.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/users/login");
+    }
+  });
+
 
 // ROUTES
 

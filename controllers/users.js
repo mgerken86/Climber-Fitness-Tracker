@@ -27,7 +27,7 @@ router.post("/createUser", async (req, res) => {
     )
     User.create(req.body)
     .then(user => {
-        res.redirect('/athletes/')
+        res.redirect('/users/login')
     })
     .catch(error => {
         console.log(error)
@@ -44,6 +44,7 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     User.findOne({ username })
       .then(async (user) => {
+          console.log(user)
         // check if user exists
         if (user) {
           // compare password
