@@ -7,22 +7,14 @@
         <tr class="table-secondary">
             <th>Date</th>
             <th>Athlete</th>
-            <th>Finger Strength</th>
-            <th>Max Pullup </th>
-            <th>Core</th>
-            <th>Endurance</th>
             <th>Total Score</th>
             <th>Delete Workout</th>
+            <th>More Info</th>
         </tr>
         {% for workout in workouts %}
         <tr>
             <td>{{ workout.createdAt }}</td>
             <td><a href="/athletes/{{workout.athlete._id}}">{{ workout.athlete.firstName }} {{workout.athlete.lastName}}</a></td>
-            <td>{{ workout.maxFinger }} </td>
-            <td>{{ workout.maxPullup }}</td>
-            <td>{{ workout.core }}</td>
-            <td>{{ workout.endurance }}</td>
-            <!-- {% assign totalScore =  %} -->
             <td>{{ workout.maxFinger | plus: workout.maxPullup | plus:
                 workout.core | plus: workout.endurance }}</td>
                 <td>
@@ -30,6 +22,7 @@
                         <input class="btn btn-default" type="submit" value="X" />
                     </form>
                 </td>   
+                <td><a href="/workouts/{{workout._id}}">Click Here</a></td>
         </tr>
         {% endfor %}
     </table>

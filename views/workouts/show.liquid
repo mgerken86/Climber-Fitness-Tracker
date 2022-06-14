@@ -1,6 +1,23 @@
 {% layout "layout.liquid" %} {% block content %}
-    <h1>Workouts Show Route</h1>
+<h1>{{workout.athlete.firstName}}'s Workout On {{workout.createdAt}}</h1>
 
-    
-    
+<table class="table">
+    <tr class="table-secondary">
+        <th>Finger Strength</th>
+        <th>Pull-up Strength</th>
+        <th>Core Strength</th>
+        <th>Endurance</th>
+    </tr>
+    <tr>
+        <th>{{workout.maxFinger}}</th>
+        <th>{{workout.maxPullup}}</th>
+        <th>{{workout.endurance}}</th>
+        <th>{{workout.core}}</th>
+    </tr>
+</table>
+    <h2>Total Score:
+        {{workout.maxFinger | plus: workout.maxPullup | plus:
+            workout.core | plus: workout.endurance}}
+    </h2>
+
 {% endblock %}

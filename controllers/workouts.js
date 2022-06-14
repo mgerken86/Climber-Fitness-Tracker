@@ -66,6 +66,7 @@ workoutsRouter.get('/:id/edit', (req, res) => {
 // show route
 workoutsRouter.get('/:id', (req, res) => {
     Workout.findById(req.params.id)
+    .populate('athlete')
     .then(workout => res.render('workouts/show.liquid', {workout}))
     .catch(error => console.log(error))
 })
