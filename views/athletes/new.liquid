@@ -3,11 +3,13 @@
   <form action="/athletes" method="POST">
     <fieldset>
       <legend>New User</legend>
-      <label>First Name: <input type="text" name="firstName" required /> </label>
-      <label
-        >Last Name: <input type="text" name="lastName" required />
+      <label class="form-control">
+        First Name: <input type="text" name="firstName" required /> 
       </label>
-      <label>
+      <label class="form-control">
+        Last Name: <input type="text" name="lastName" required />
+      </label>
+      <label class="form-control">
         Birthday: <input type="date" max="2020-01-01" name="birthday" required />
       </label>
       <input type="submit" value="Create Athlete" />

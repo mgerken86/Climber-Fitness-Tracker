@@ -1,12 +1,11 @@
 {% layout "layout.liquid" %} {% block content %}
     <h1> {{athlete.firstName }}</h1>
-    <a href="/athletes">Back to Athletes List</a>
-    <h2>workouts: {{ athlete.workouts }}</h2>
-    <a href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
-    <br><br>
-    <a href="/workouts/{{athlete._id}}/new">Add a new workout</a>
-    <br><br><br>
+    <div class="flex-container">
+    <a class="btn btn-default" href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
+    <a class="btn btn-default" href="/workouts/{{athlete._id}}/new">Add a new workout for {{athlete.firstName}}</a>
     <form action="/athletes/{{ athlete._id }}?_method=DELETE" method="POST">
-        <input type="submit" value="Delete {{athlete.firstName}}" />
+        <input class="btn btn-default" type="submit" value="Delete {{athlete.firstName}}" />
       </form>
+    </div>
+    <h2>Workouts: {{ athlete.workouts }}</h2>
 {% endblock %}
