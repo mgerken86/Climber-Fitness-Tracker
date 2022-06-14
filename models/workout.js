@@ -7,10 +7,10 @@ const { Schema, model } = mongoose
 const workoutSchema = new Schema({
     // athlete: {type: Schema.Types.ObjectId, ref: 'Athlete', required: true},
     createdAt: {type: Date, default: Date.now},
-    maxFinger: Number,
-    maxPullup: Number,
-    core: Number,
-    endurance: Number
+    maxFinger: {type: Number, required: true},
+    maxPullup: {type: Number, required: true},
+    core: {type: Number, required: true},
+    endurance: {type: Number, required: true},
 })
 
 // workout model

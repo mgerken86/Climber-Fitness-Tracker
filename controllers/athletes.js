@@ -32,6 +32,7 @@ athletesRouter.delete('/:id', (req, res) => {
 //update route
 athletesRouter.put('/:id', (req, res) => {
     const id = req.params.id
+    console.log(req.body)
     Athlete.findByIdAndUpdate(id, {$push: {workouts: req.body}}, {new: true})
     .then(athlete => {
         res.redirect(`/athletes/${id}`)
