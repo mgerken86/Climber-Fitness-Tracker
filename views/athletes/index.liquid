@@ -1,22 +1,20 @@
 {% layout "layout.liquid" %} {% block content %}
-
+<h1>Athletes Index Route</h1>
 <a class="btn btn-default" href="/athletes/new">Add New Climber</a>
-    <h1>Athletes Index Route</h1>
-
-    <table>
-        <tr>
-            <th>First</th>
-            <th>Last</th>
-            <th>Current Climbing Grade </th>
-            <th>See Workouts</th>
-        </tr>
-        {% for athlete in athletes %}
-        <tr>
-            <td>{{ athlete.firstName }}</td>
-            <td>{{ athlete.lastName }} </td>
-            <td>*** Climbing Grade ***</td>
-            <td><a class="btn btn-default" href="/athletes/{{ athlete._id }}">More info</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+<table class="table">
+    <tr class="table-secondary">
+        <th>First</th>
+        <th>Last</th>
+        <th>Current Climbing Grade </th>
+        <th>See Workouts</th>
+    </tr>
+    {% for athlete in athletes %}
+    <tr>
+        <td>{{ athlete.firstName }}</td>
+        <td>{{ athlete.lastName }} </td>
+        <td>*** Climbing Grade ***</td>
+        <td><a class="btn btn-default" href="/athletes/{{ athlete._id }}">More info</a></td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}

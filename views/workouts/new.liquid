@@ -1,13 +1,13 @@
 {% layout 'layout.liquid' %} {% block content %}
 <div class="container">
     <article>
-        <!-- <form action="/athletes/{{athlete._id}}?_method=PUT" method="POST"> -->
-        <form action="/workouts" method="POST">
-            <fieldset>
+        <form action="/athletes/{{athlete._id}}" method="POST">
+        <!-- <form class action="/workouts" method="POST"> -->
+            <fieldset class="mb-3">
                 <legend>Test Your Strength!</legend>
-                <label class="form-label">
+                <label class="form-label row">
                     Max Finger Strength:
-                    <input 
+                    <input class="form-control"
                     type="number" 
                     min="0" 
                     max="10" 
@@ -15,9 +15,9 @@
                     placeholder="Points scored" 
                     />
                 </label>
-                <label class="form-label">
+                <label class="form-label row">
                     Max Pull-up:
-                    <input 
+                    <input class="form-control"
                     type="number" 
                     min="0" 
                     max="10" 
@@ -25,9 +25,9 @@
                     placeholder="Points scored" 
                     />
                 </label>
-                <label class="form-label">
+                <label class="form-label row">
                     Core:
-                    <input 
+                    <input class="form-control"
                     type="number" 
                     min="0" 
                     max="10" 
@@ -35,9 +35,9 @@
                     placeholder="Points scored" 
                     />
                 </label>
-                <label class="form-label">
+                <label class="form-label row">
                     Endurance:
-                    <input 
+                    <input class="form-control"
                     type="number" 
                     min="0" 
                     max="10" 
@@ -45,7 +45,7 @@
                     placeholder="Points scored"/>
                 </label>
             </fieldset>
-            <input type="submit" value="Find My Climbing Grade" />
+            <input type="submit" value="Record Workout" />
         </form>
     </article>
 </div>

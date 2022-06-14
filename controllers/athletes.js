@@ -1,5 +1,6 @@
 const express = require('express')
 const Athlete = require('../models/athlete')
+const Workout = require('../models/workout')
 
 // CREATE ROUTE
 
@@ -39,18 +40,18 @@ athletesRouter.delete('/:id', (req, res) => {
 })
 
 //update route
-athletesRouter.put('/:id', (req, res) => {
-    const athleteId = req.params.id
-    console.log(athleteId)
-    // const workoutId = req.body._id
-    // console.log(req.body._id)
-    // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
-    Athlete.findByIdAndUpdate(athleteId, req.body, {new: true})
-    .then(athlete => {
-        res.redirect(`/athletes/${athleteId}`)
-    })
-    .catch(error => console.log(error))
-})
+// athletesRouter.put('/:id', (req, res) => {
+//     const athleteId = req.params.id
+//     console.log(athleteId)
+//     // const workoutId = req.body._id
+//     // console.log(req.body._id)
+//     // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
+//     Athlete.findByIdAndUpdate(athleteId, req.body, {new: true})
+//     .then(athlete => {
+//         res.redirect(`/athletes/${athleteId}`)
+//     })
+//     .catch(error => console.log(error))
+// })
 
 
 // create route
@@ -61,6 +62,20 @@ athletesRouter.post('/', (req, res) => {
         res.redirect('/athletes')
     })
     .catch(error => console.log(error)) 
+})
+
+// create route for adding workouts
+athletesRouter.post('/:id', (req, res) => {
+    athleteId = req.params.id
+    Workout.create(req.body)
+    .then(workout => {
+        Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workout._id}}, {new: true})
+    })
+    .then(athlete => {
+        console.log(athlete)
+        res.redirect('/athletes')
+    })
+    .catch(error => console.log(error))
 })
 
 

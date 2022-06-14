@@ -1,4 +1,5 @@
 const express = require('express')
+const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
 
 // CREATE ROUTE
@@ -19,7 +20,11 @@ workoutsRouter.get('/', (req, res) =>{
 })
 
 // new route
-workoutsRouter.get('/:id/new', (req, res) => res.render('workouts/new.liquid'))
+workoutsRouter.get('/:id/new', (req, res) => {
+    Athlete.findById(req.params.id)
+    .then(athlete => res.render('workouts/new.liquid', {athlete}))
+    .catch(error => console.log(error))
+})
 
 
 // delete route
@@ -59,7 +64,7 @@ workoutsRouter.get('/:id/edit', (req, res) => {
 
 // show route
 workoutsRouter.get('/:id', (req, res) => {
-    Athlete.findById(req.params.id)
+    Workout.findById(req.params.id)
     .then(workout => res.render('workouts/show.liquid', {workout}))
     .catch(error => console.log(error))
 })
