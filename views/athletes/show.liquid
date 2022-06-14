@@ -1,15 +1,21 @@
 {% layout "layout.liquid" %} {% block content %}
-    <h1> {{athlete.firstName }}</h1>
-    <div class="flex-container">
+<h1> {{athlete.firstName }}</h1>
+<div class="flex-container">
     <a class="btn btn-default" href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
     <a class="btn btn-default" href="/workouts/{{athlete._id}}/new">Add a new workout for {{athlete.firstName}}</a>
-    </div>
-    <h2>Workouts:</h2>
-    <table class="table">
+</div>
+<h2>Workouts:</h2>
+<table class="table">
+    <tr class="table-secondary">
+        <th>Date</th>
+        <th>Total Score</th>
+    </tr>
     {% for workout in athlete.workouts %}
-    <p>Date: {{workout.createdAt}} <br>
-    Total Score: {{workout.maxFinger | plus: workout.maxPullup | plus:
-        workout.core | plus: workout.endurance}}</p>
+    <tr>
+        <td>{{workout.createdAt}}</td>
+        <td>{{workout.maxFinger | plus: workout.maxPullup | plus:
+            workout.core | plus: workout.endurance}}</td>
+    </tr>
     {% endfor %}
 </table>
 {% endblock %}

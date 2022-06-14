@@ -13,6 +13,7 @@ const workoutsRouter = express.Router()
 workoutsRouter.get('/', (req, res) =>{
     //find all the athletes
     Workout.find({})
+    .populate('athlete')
     .then(workouts => {
         res.render('workouts/index.liquid', {workouts})
     })
