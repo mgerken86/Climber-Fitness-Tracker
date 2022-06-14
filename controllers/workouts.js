@@ -19,7 +19,7 @@ workoutsRouter.get('/', (req, res) =>{
 })
 
 // new route
-workoutsRouter.get('/new', (req, res) => res.render('workouts/new.liquid'))
+workoutsRouter.get('/:id/new', (req, res) => res.render('workouts/new.liquid'))
 
 
 // delete route
@@ -39,11 +39,13 @@ workoutsRouter.put('/:id', (req, res) => {
 
 // create route
 workoutsRouter.post('/', (req, res) => {
+    console.log
     const workout = req.body
-    console.log(workout)
     Workout.create(workout)
     .then(workout => {
+
         res.redirect('/workouts')
+        console.log(workout)
     })
     .catch(error => console.log(error)) 
 })

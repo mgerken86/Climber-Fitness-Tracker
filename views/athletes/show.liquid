@@ -2,5 +2,7 @@
     <h1> {{athlete.firstName }}</h1>
     <a href="/athletes">Back to Athletes List</a>
     <h2>workouts: {{ athlete.workouts }}</h2>
-    <a href="/athletes/{{athlete._id}}/addWorkout">Add a new workout</a>
+    <a href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
+    <br>
+    <a href="/workouts/{{athlete._id}}/new">Add a new workout</a>
 {% endblock %}

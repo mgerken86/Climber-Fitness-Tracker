@@ -1,3 +1,41 @@
 {% layout "layout.liquid" %} {% block content %}
     <h1>Athletes Edit Route</h1>
+
+<div>
+  <form action="/athletes/{{athlete._id}}?_method=PUT" method="POST">
+    <fieldset>
+      <legend>New User</legend>
+      <label>First Name: 
+          <input 
+          type="text" 
+          name="firstName" 
+          value="{{athlete.firstName}}"
+          required 
+          /> 
+        </label>
+      <label
+        >Last Name: 
+        <input 
+        type="text" 
+        name="lastName" 
+        value="{{athlete.lastName}}"
+        required />
+      </label>
+      <label>
+        Birthday: 
+        <input 
+        type="date" 
+        max="2020-01-01" 
+        name="birthday" 
+        value="{{athlete.birthday}}"
+        required />
+      </label>
+      <label>
+        Workouts: 
+        <input type="type: Schema.Types.ObjectId, ref: 'Workout'" />
+      </label>
+      <input type="submit" value="Edit Athlete" />
+    </fieldset>
+  </form>
+</div>
 {% endblock %}

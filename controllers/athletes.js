@@ -31,13 +31,14 @@ athletesRouter.delete('/:id', (req, res) => {
 
 //update route
 athletesRouter.put('/:id', (req, res) => {
-    const id = req.params.id
-    console.log(req.body)
-    Athlete.findByIdAndUpdate(id, {$push: {workouts: req.body}}, {new: true})
+    const athleteId = req.params.id
+    console.log(athleteId)
+    // const workoutId = req.body._id
+    // console.log(req.body._id)
+    // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
+    Athlete.findByIdAndUpdate(athleteId, rec.body, {new: true})
     .then(athlete => {
-        res.redirect(`/athletes/${id}`)
-        console.log(athlete)
-        console.log(athlete.workouts)
+        res.redirect(`/athletes/${athleteId}`)
     })
     .catch(error => console.log(error))
 })
