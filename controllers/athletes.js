@@ -16,6 +16,9 @@ athletesRouter.use((req, res, next) => {
     }
 });
 
+
+// ***** ROUTES ***** 
+
 // index route
 athletesRouter.get('/', (req, res) => {
     User.find({ username: req.session.username })
@@ -24,6 +27,7 @@ athletesRouter.get('/', (req, res) => {
                 .then(athletes => {
                     res.render('athletes/index.liquid', { athletes, user: user[0] })
                 })
+                .catch(error => console.log(error))
         })
         .catch(error => console.log(error))
 })
@@ -53,7 +57,6 @@ athletesRouter.put('/:id', (req, res) => {
         .catch(error => console.log(error))
 })
 
-
 // create route
 athletesRouter.post('/', (req, res) => {
     const athlete = req.body
@@ -64,7 +67,7 @@ athletesRouter.post('/', (req, res) => {
         .catch(error => console.log(error))
 })
 
-// create route for adding workouts
+// create route for adding workouts to athlete
 athletesRouter.post('/:id', (req, res) => {
     const athleteId = req.params.id
     req.body.athlete = athleteId
@@ -79,25 +82,6 @@ athletesRouter.post('/:id', (req, res) => {
         .catch(error => console.log(error))
 })
 
-
-// edit route
-// athletesRouter.get('/:id/edit', (req, res) => {
-//     Athlete.findById(req.params.id)
-//         .then(athlete => res.render('athletes/edit.liquid', { athlete }))
-//         .catch(error => console.log(error))
-// })
-
-// athletesRouter.get('/', (req, res) => {
-//     User.find({ username: req.session.username })
-//         .then(user => {
-//             Athlete.find({})
-//                 .then(athletes => {
-//                     res.render('athletes/index.liquid', { athletes, user: user[0] })
-//                 })
-//         })
-//         .catch(error => console.log(error))
-// })
-
 // edit route
 athletesRouter.get('/:id/edit', (req, res) => {
     User.find({ username: req.session.username})
@@ -109,15 +93,17 @@ athletesRouter.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// show route
+// Show route
 athletesRouter.get('/:id', (req, res) => {
-    Athlete.findById(req.params.id)
-        .populate('workouts')
-        .then(athlete => res.render('athletes/show.liquid', { athlete }))
-        .catch(error => console.log(error))
-})
-
-//
+    User.find({ username: req.session.username})
+    .then(user => {
+        Athlete.findById(req.params.id)
+            .populate('workouts')
+            .then(athlete => res.render('athletes/show.liquid', { athlete, user: user[0] }))
+            .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
+    })
 
 
 // export router to server.js
