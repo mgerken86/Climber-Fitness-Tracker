@@ -5,7 +5,6 @@ const express = require("express");
 const {User} = require("../models/user");
 const bcrypt = require("bcryptjs");
 
-
 /////////////////////////////////////////
 // Create Route
 /////////////////////////////////////////
@@ -24,7 +23,6 @@ userRouter.post('/login', async (req, res) => {
   const { username, password } = req.body;
   User.findOne({ username })
     .then(async (user) => {
-        console.log(user)
       // check if user exists
       if (user) {
         // compare password
@@ -103,4 +101,4 @@ userRouter.get('/:id', (req, res) => {
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
-module.exports = userRouter;
+module.exports = {userRouter};

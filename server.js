@@ -8,7 +8,7 @@ const methodOverride = require("method-override")
 const path = require("path")
 const athletesRouter = require("./controllers/athletes")
 const workoutsRouter = require("./controllers/workouts")
-const userRouter = require('./controllers/users')
+const {userRouter} = require('./controllers/users')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 

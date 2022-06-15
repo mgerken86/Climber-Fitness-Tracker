@@ -1,20 +1,25 @@
 const express = require('express');
-const { findById } = require('../models/athlete');
+const { findOne } = require('../models/athlete');
 const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
+const User = require('../models/user')
 
-// CREATE ROUTE
+
+//  ROUTER
 
 const athletesRouter = express.Router()
 
 // Authorization Middleware
 athletesRouter.use((req, res, next) => {
+    console.log(req.session)
     if (req.session.loggedIn) {
       next();
     } else {
       res.redirect("/users/login");
     }
   });
+
+
 
 // ROUTES
 
