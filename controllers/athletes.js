@@ -1,7 +1,7 @@
 const express = require('express');
 const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
-const {User} = require('../models/user');
+const { User } = require('../models/user');
 
 
 //  ROUTER
@@ -31,8 +31,8 @@ athletesRouter.get('/', (req, res) => {
 // new route
 athletesRouter.get('/new', (req, res) => {
     User.find({ username: req.session.username })
-    .then(user => res.render('athletes/new.liquid', {user: user[0]}))
-    .catch(error => console.log(error))
+        .then(user => res.render('athletes/new.liquid', { user: user[0] }))
+        .catch(error => console.log(error))
 })
 
 
@@ -87,12 +87,27 @@ athletesRouter.post('/:id', (req, res) => {
 //         .catch(error => console.log(error))
 // })
 
+// athletesRouter.get('/', (req, res) => {
+//     User.find({ username: req.session.username })
+//         .then(user => {
+//             Athlete.find({})
+//                 .then(athletes => {
+//                     res.render('athletes/index.liquid', { athletes, user: user[0] })
+//                 })
+//         })
+//         .catch(error => console.log(error))
+// })
+
 // edit route
 athletesRouter.get('/:id/edit', (req, res) => {
+    User.find({ username: req.session.username})
+    .then(user => {
         Athlete.findById(req.params.id)
-            .then(athlete => res.render('athletes/edit.liquid', { athlete }))
+            .then(athlete => res.render('athletes/edit.liquid', { athlete, user: user[0] }))
             .catch(error => console.log(error))
     })
+    .catch(error => console.log(error))
+})
 
 // show route
 athletesRouter.get('/:id', (req, res) => {
