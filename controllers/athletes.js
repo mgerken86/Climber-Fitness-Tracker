@@ -16,7 +16,6 @@ athletesRouter.use((req, res, next) => {
     }
   });
 
-
 // ROUTES
 
 // index route 
@@ -68,6 +67,7 @@ athletesRouter.post('/', (req, res) => {
 athletesRouter.post('/:id', (req, res) => {
     const athleteId = req.params.id
     req.body.athlete = athleteId
+    console.log(req.body)
     Workout.create(req.body)
     .then(workout => {
         return Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workout._id}}, {new: true})

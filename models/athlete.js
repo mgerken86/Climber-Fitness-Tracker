@@ -13,9 +13,18 @@ const athletesSchema = new Schema({
     img: String,
     workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
 })
+//Instance Methods
+// athletesSchema.methods.getFullName = function() {
+//     return this.firstName + this.lastName
+//   }
+
+//   const fullName = Athlete.getFullName()
+
 
 // athlete model
 const Athlete = model('Athlete', athletesSchema)
+
+
 
 
 module.exports = Athlete
