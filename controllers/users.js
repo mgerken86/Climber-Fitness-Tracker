@@ -80,7 +80,10 @@ userRouter.post('/createUser', async (req, res) => {
 userRouter.put('/:id', (req, res) => {
   const userId = req.params.id
   User.findByIdAndUpdate(userId, req.body, {new: true})
-  .then(user => res.redirect(`/users/${userId}`))
+  .then(user => {
+    req.session.loggedIn = true
+    res.redirect(`/users/${userId}`)
+  })
   .catch(error => console.log(error))
 })
 
