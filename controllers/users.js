@@ -9,26 +9,26 @@ const bcrypt = require("bcryptjs");
 /////////////////////////////////////////
 // Create Route
 /////////////////////////////////////////
-const router = express.Router();
+const userRouter = express.Router();
 
 /////////////////////////////////////////
 // Routes
 /////////////////////////////////////////
 
 // The Signup Routes (Get => form, post => submit form)
-router.get('/createUser', (req, res) => {
+userRouter.get('/createUser', (req, res) => {
     res.render("users/createUser.liquid");
 });
 
 // New User
-router.post('/createUser', async (req, res) => {
+userRouter.post('/createUser', async (req, res) => {
     req.body.password = await bcrypt.hash(
         req.body.password,
         await bcrypt.genSalt(10)
     )
     User.create(req.body)
     .then(user => {
-        res.redirect('/users/login')
+        res.redirect(`/users/${user._id}/update`)
     })
     .catch(error => {
         console.log(error)
@@ -36,12 +36,14 @@ router.post('/createUser', async (req, res) => {
     })
 });
 
+
+
 // The login Routes (Get => form, post => submit form)
-router.get('/login', (req, res) => {
+userRouter.get('/login', (req, res) => {
     res.render("users/login.liquid");
 });
 
-router.post('/login', async (req, res) => {
+userRouter.post('/login', async (req, res) => {
     const { username, password } = req.body;
     User.findOne({ username })
       .then(async (user) => {
@@ -71,21 +73,27 @@ router.post('/login', async (req, res) => {
   });
   
 
-router.get('/logout', (req, res) => {
+userRouter.get('/logout', (req, res) => {
     // destroy session and redirect to main page
     req.session.destroy((err) => {
       res.redirect("/login");
     });
   });
 
-router.get(':/id', (req, res) => {
+// Edit Route
+userRouter.get('/:id/update', (req, res) => {
+  User.findById(req.params.id)
+  .then(user => res.render('users/myInfo.liquid'))
+  .catch(error => console.log(error))
+})
+  
+// Show Route
+userRouter.get('/:id', (req, res) => {
   User.findById(req.params.id)
   .populate('workouts')
   .then(user => res.render('users/home.liquid', {user}))
 })
-  
-
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
-module.exports = router;
+module.exports = userRouter;

@@ -8,7 +8,7 @@ const methodOverride = require("method-override")
 const path = require("path")
 const athletesRouter = require("./controllers/athletes")
 const workoutsRouter = require("./controllers/workouts")
-const usersRouter = require('./controllers/users')
+const userRouter = require('./controllers/users')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 
@@ -35,7 +35,7 @@ app.use(session({
 // Use the routers from controllers directory
 app.use('/athletes', athletesRouter)
 app.use('/workouts', workoutsRouter)
-app.use('/users', usersRouter)
+app.use('/users', userRouter)
 
 // log-in / sign-up page
 app.use('/', (req, res) => res.render('users/login.liquid'))
