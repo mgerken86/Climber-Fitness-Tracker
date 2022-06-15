@@ -1,7 +1,7 @@
 const express = require('express');
 const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
-const { User } = require('../models/user');
+const { User } = require('../models/user')
 
 
 //  ROUTER
@@ -84,26 +84,26 @@ athletesRouter.post('/:id', (req, res) => {
 
 // edit route
 athletesRouter.get('/:id/edit', (req, res) => {
-    User.find({ username: req.session.username})
-    .then(user => {
-        Athlete.findById(req.params.id)
-            .then(athlete => res.render('athletes/edit.liquid', { athlete, user: user[0] }))
-            .catch(error => console.log(error))
-    })
-    .catch(error => console.log(error))
+    User.find({ username: req.session.username })
+        .then(user => {
+            Athlete.findById(req.params.id)
+                .then(athlete => res.render('athletes/edit.liquid', { athlete, user: user[0] }))
+                .catch(error => console.log(error))
+        })
+        .catch(error => console.log(error))
 })
 
 // Show route
 athletesRouter.get('/:id', (req, res) => {
-    User.find({ username: req.session.username})
-    .then(user => {
-        Athlete.findById(req.params.id)
-            .populate('workouts')
-            .then(athlete => res.render('athletes/show.liquid', { athlete, user: user[0] }))
-            .catch(error => console.log(error))
-    })
-    .catch(error => console.log(error))
-    })
+    User.find({ username: req.session.username })
+        .then(user => {
+            Athlete.findById(req.params.id)
+                .populate('workouts')
+                .then(athlete => res.render('athletes/show.liquid', { athlete, user: user[0] }))
+                .catch(error => console.log(error))
+        })
+        .catch(error => console.log(error))
+})
 
 
 // export router to server.js
