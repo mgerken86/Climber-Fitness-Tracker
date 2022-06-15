@@ -1,0 +1,33 @@
+{% layout "layout.liquid" %} {% block content %}
+
+<h1>Edit YOUR Information</h1>
+
+<div>
+    <form action="/users/{{user._id}}?_method=PUT" method="POST">
+        <fieldset>
+            <legend>EDIT</legend>
+            <label class="form-control">
+                USERNAME: <input type="text" name="username" required />
+            </label>
+            <label class="form-control">
+                PASSWORD: <input type="password" name="password" required />
+            </label>
+            <label class="form-control">
+                FIRST NAME: <input type="text" name="firstName" required />
+            </label>
+            <label class="form-control">
+                LAST NAME: <input type="text" name="lastName" required />
+            </label>
+            <label class="form-control">
+                BIRTHDAY: <input type="date" max="2020-01-01" name="birthday" />
+            </label>
+            <label class="form-control">
+                 TEAMS: <input type="text" name="teams" required /> 
+              </label>
+            <input type="submit" value="Update My Info" />
+        </fieldset>
+    </form>
+</div>
+
+
+{% endblock %}

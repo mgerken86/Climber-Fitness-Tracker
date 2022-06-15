@@ -13,7 +13,11 @@ const { Schema, model } = mongoose
 const userSchema = new Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    gym: String, // this is for whether or not you're a coach or an athlete
+    firstName: String,
+    lastName: String,
+    birthday: Number,
+    teams: String, // this is for whether or not you're a coach or an athlete
+    workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
 })
 
 // user model
