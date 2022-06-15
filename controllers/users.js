@@ -14,6 +14,48 @@ const userRouter = express.Router();
 /////////////////////////////////////////
 // Routes
 /////////////////////////////////////////
+// **** LOGIN / LOGIN ROUTES *****
+// The login Routes (Get => form, post => submit form)
+userRouter.get('/login', (req, res) => {
+  res.render("users/login.liquid");
+});
+
+userRouter.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  User.findOne({ username })
+    .then(async (user) => {
+        console.log(user)
+      // check if user exists
+      if (user) {
+        // compare password
+        const result = await bcrypt.compare(password, user.password);
+        if (result) {
+          // store some properties in the session object
+          req.session.username = username;
+          req.session.loggedIn = true;
+          res.redirect(`/users/${user._id}`);
+        } else {
+          // error if password doesn't match
+          res.json({ error: "Sorry, that password is incorrect" });
+        }
+      } else {
+        // send error if user doesn't exist
+        res.json({ error: "Sorry, that user doesn't exist" });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
+
+
+userRouter.get('/logout', (req, res) => {
+  // destroy session and redirect to main page
+  req.session.destroy((err) => {
+    res.redirect("/login");
+  });
+});
 
 // The Signup Routes (Get => form, post => submit form)
 userRouter.get('/createUser', (req, res) => {
@@ -36,49 +78,12 @@ userRouter.post('/createUser', async (req, res) => {
     })
 });
 
-
-
-// The login Routes (Get => form, post => submit form)
-userRouter.get('/login', (req, res) => {
-    res.render("users/login.liquid");
-});
-
-userRouter.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    User.findOne({ username })
-      .then(async (user) => {
-          console.log(user)
-        // check if user exists
-        if (user) {
-          // compare password
-          const result = await bcrypt.compare(password, user.password);
-          if (result) {
-            // store some properties in the session object
-            req.session.username = username;
-            req.session.loggedIn = true;
-            res.redirect(`/users/${user._id}`);
-          } else {
-            // error if password doesn't match
-            res.json({ error: "Sorry, that password is incorrect" });
-          }
-        } else {
-          // send error if user doesn't exist
-          res.json({ error: "Sorry, that user doesn't exist" });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        res.json({ error });
-      });
-  });
-  
-
-userRouter.get('/logout', (req, res) => {
-    // destroy session and redirect to main page
-    req.session.destroy((err) => {
-      res.redirect("/login");
-    });
-  });
+// Update User
+userRouter.put('/:id', (req, res) => {
+  User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(user => res.redirect(`/users/${user._id}`))
+  .catch(error => console.log(error))
+})
 
 // Edit Route
 userRouter.get('/:id/update', (req, res) => {
@@ -93,6 +98,7 @@ userRouter.get('/:id', (req, res) => {
   .populate('workouts')
   .then(user => res.render('users/home.liquid', {user}))
 })
+
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
