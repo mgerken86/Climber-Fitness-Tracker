@@ -40,8 +40,8 @@ workoutsRouter.get('/:id/new', (req, res) => {
             Athlete.findById(req.params.id)
                 .then(athlete => res.render('workouts/new.liquid', { athlete, user: user[0] }))
                 .catch(error => console.log(error))
-                .catch(error => console.log(error))
         })
+        .catch(error => console.log(error))
 })
 
 
@@ -62,11 +62,9 @@ workoutsRouter.put('/:id', (req, res) => {
 
 // create route
 workoutsRouter.post('/', (req, res) => {
-    console.log
     const workout = req.body
     Workout.create(workout)
         .then(workout => {
-
             res.redirect('/workouts')
             console.log(workout)
         })
@@ -76,18 +74,21 @@ workoutsRouter.post('/', (req, res) => {
 // edit route
 workoutsRouter.get('/:id/edit', (req, res) => {
     Workout.findById(req.params.id)
-        .then(workout => res.render('workouts/edit.liquid', { workout }))
+        .then(workout => res.render('workouts/edit.liquid', { workout, user: user[0] }))
         .catch(error => console.log(error))
 })
 
 // show route
 workoutsRouter.get('/:id', (req, res) => {
-    Workout.findById(req.params.id)
-        .populate('athlete')
-        .then(workout => res.render('workouts/show.liquid', { workout }))
+    User.find({ username: req.session.username })
+        .then(user => {
+            Workout.findById(req.params.id)
+                .populate('athlete')
+                .then(workout => res.render('workouts/show.liquid', { workout, user: user[0] }))
+                .catch(error => console.log(error))
         .catch(error => console.log(error))
+        })
 })
-
 
 
 
