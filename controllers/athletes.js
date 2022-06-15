@@ -1,8 +1,14 @@
 const express = require('express');
-const { findOne } = require('../models/athlete');
 const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
-const User = require('../models/user')
+const {User} = require('../models/user');
+
+
+// const user = User.findOne({username: req.session.username})
+// User.findOne({username: req.session.username})
+// .then(user => {
+//      const currentUser = user
+// })
 
 
 //  ROUTER
@@ -13,24 +19,38 @@ const athletesRouter = express.Router()
 athletesRouter.use((req, res, next) => {
     console.log(req.session)
     if (req.session.loggedIn) {
-      next();
+        next()
     } else {
-      res.redirect("/users/login");
+        res.redirect("/users/login");
     }
-  });
+});
 
 
 
 // ROUTES
 
 // index route 
-athletesRouter.get('/', (req, res) =>{
-    //find all the athletes
-    Athlete.find({})
-    .then(athletes => {
-        res.render('athletes/index.liquid', {athletes})
-    })
-    .catch(error => console.log(error))
+// athletesRouter.get('/', (req, res) =>{
+//     //find all the athletes
+//     Athlete.find({})
+//     .then(athletes => {
+//         res.render('athletes/index.liquid', {athletes})
+//     })
+//     .catch(error => console.log(error))
+// })
+
+athletesRouter.get('/', (req, res) => {
+    User.find({ username: req.session.username })
+        .then(user => {
+            console.log(user)
+            Athlete.find({})
+                .then(athletes => {
+                    res.render('athletes/index.liquid', { athletes, user: user[0] })
+                })
+        })
+        //find all the athletes
+
+        .catch(error => console.log(error))
 })
 
 // new route
@@ -40,8 +60,8 @@ athletesRouter.get('/new', (req, res) => res.render('athletes/new.liquid'))
 // delete route
 athletesRouter.delete('/:id', (req, res) => {
     Athlete.findByIdAndDelete(req.params.id)
-    .then(athlete => res.redirect('/athletes'))
-    .catch(error => console.log(error))
+        .then(athlete => res.redirect('/athletes'))
+        .catch(error => console.log(error))
 })
 
 // update route
@@ -50,11 +70,11 @@ athletesRouter.put('/:id', (req, res) => {
     // const workoutId = req.body._id
     // console.log(req.body._id)
     // Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workoutId}}, {new: true})
-    Athlete.findByIdAndUpdate(athleteId, req.body, {new: true})
-    .then(athlete => {
-        res.redirect(`/athletes/${athleteId}`)
-    })
-    .catch(error => console.log(error))
+    Athlete.findByIdAndUpdate(athleteId, req.body, { new: true })
+        .then(athlete => {
+            res.redirect(`/athletes/${athleteId}`)
+        })
+        .catch(error => console.log(error))
 })
 
 
@@ -62,10 +82,10 @@ athletesRouter.put('/:id', (req, res) => {
 athletesRouter.post('/', (req, res) => {
     const athlete = req.body
     Athlete.create(athlete)
-    .then(athlete => {
-        res.redirect('/athletes')
-    })
-    .catch(error => console.log(error)) 
+        .then(athlete => {
+            res.redirect('/athletes')
+        })
+        .catch(error => console.log(error))
 })
 
 // create route for adding workouts
@@ -74,21 +94,21 @@ athletesRouter.post('/:id', (req, res) => {
     req.body.athlete = athleteId
     console.log(req.body)
     Workout.create(req.body)
-    .then(workout => {
-        return Athlete.findByIdAndUpdate(athleteId, {$push: {workouts: workout._id}}, {new: true})
-    })
-    .then(athlete => {
-        res.redirect('/workouts')
-    })
-    .catch(error => console.log(error))
+        .then(workout => {
+            return Athlete.findByIdAndUpdate(athleteId, { $push: { workouts: workout._id } }, { new: true })
+        })
+        .then(athlete => {
+            res.redirect('/workouts')
+        })
+        .catch(error => console.log(error))
 })
 
 
 // edit route
 athletesRouter.get('/:id/edit', (req, res) => {
     Athlete.findById(req.params.id)
-    .then(athlete => res.render('athletes/edit.liquid', {athlete}))
-    .catch(error => console.log(error))
+        .then(athlete => res.render('athletes/edit.liquid', { athlete }))
+        .catch(error => console.log(error))
 })
 
 // // add workout route
@@ -101,9 +121,9 @@ athletesRouter.get('/:id/edit', (req, res) => {
 // show route
 athletesRouter.get('/:id', (req, res) => {
     Athlete.findById(req.params.id)
-    .populate('workouts')
-    .then(athlete => res.render('athletes/show.liquid', {athlete}))
-    .catch(error => console.log(error))
+        .populate('workouts')
+        .then(athlete => res.render('athletes/show.liquid', { athlete }))
+        .catch(error => console.log(error))
 })
 
 //
