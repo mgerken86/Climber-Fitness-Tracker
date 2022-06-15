@@ -15,7 +15,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     firstName: String,
     lastName: String,
-    birthday: Number,
+    birthday: Date,
     teams: String, // this is for whether or not you're a coach or an athlete
     workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
 })

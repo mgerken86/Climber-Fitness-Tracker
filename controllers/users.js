@@ -80,15 +80,16 @@ userRouter.post('/createUser', async (req, res) => {
 
 // Update User
 userRouter.put('/:id', (req, res) => {
-  User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-  .then(user => res.redirect(`/users/${user._id}`))
+  const userId = req.params.id
+  User.findByIdAndUpdate(userId, req.body, {new: true})
+  .then(user => res.redirect(`/users/${userId}`))
   .catch(error => console.log(error))
 })
 
 // Edit Route
 userRouter.get('/:id/update', (req, res) => {
   User.findById(req.params.id)
-  .then(user => res.render('users/myInfo.liquid'))
+  .then(user => res.render('users/myInfo.liquid', {user}))
   .catch(error => console.log(error))
 })
   
