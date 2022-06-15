@@ -6,6 +6,15 @@ const Workout = require('../models/workout')
 
 const workoutsRouter = express.Router()
 
+// Authorization Middleware
+workoutsRouter.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/users/login");
+    }
+  });
+
 
 // ROUTES
 

@@ -20,6 +20,7 @@ router.get("/createUser", (req, res) => {
     res.render("users/createUser.liquid");
 });
 
+// create User
 router.post("/createUser", async (req, res) => {
     req.body.password = await bcrypt.hash(
         req.body.password,
@@ -56,11 +57,11 @@ router.post("/login", async (req, res) => {
             res.redirect("/athletes");
           } else {
             // error if password doesn't match
-            res.json({ error: "password doesn't match" });
+            res.json({ error: "Sorry, that password is incorrect" });
           }
         } else {
           // send error if user doesn't exist
-          res.json({ error: "user doesn't exist" });
+          res.json({ error: "Sorry, that user doesn't exist" });
         }
       })
       .catch((error) => {
