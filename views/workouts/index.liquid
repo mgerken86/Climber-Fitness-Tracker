@@ -9,13 +9,13 @@
         <th>More Info</th>
     </tr>
     {% for workout in workouts %}
-        <tr>
-            {% capture i %}{{ i | plus:1 }}{% endcapture %}
-                <td>{{ i }}. {{workout.date }}</td>
-                <td>{{workout.athlete.firstName }} {{workout.athlete.lastName}}</td>
-                <td>{{workout.climbingGrade}}</td>
-                <td><a href="/workouts/{{workout._id}}">Click Here</a></td>
-        </tr>
+    <tr>
+        {% capture i %}{{ i | plus:1 }}{% endcapture %}
+        <td>{{ i }}. {{workout.athlete.firstName }} {{workout.athlete.lastName}}</td>
+        <td>{{workout.date }}</td>
+        <td>{{workout.climbingGrade}}</td>
+        <td><a href="/workouts/{{workout._id}}">Click Here</a></td>
+    </tr>
     {% endfor %}
 </table>
 {% endblock %}

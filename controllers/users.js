@@ -68,8 +68,8 @@ userRouter.post('/createUser', async (req, res) => {
   )
   User.create(req.body)
     .then(user => {
-      req.session.username = username;
       req.session.loggedIn = true;
+      req.session.username = req.body.username
       res.redirect(`/users/${user._id}/update`)
     })
     .catch(error => {
