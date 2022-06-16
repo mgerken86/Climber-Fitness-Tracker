@@ -1,11 +1,10 @@
 {% layout "layout.liquid" %} {% block content %}
-    <h1>Athletes Edit Route</h1>
+    <h1>Edit {{athlete.firstName}} {{athlete.lastName}}</h1>
 
 <div>
   <form action="/athletes/{{athlete._id}}?_method=PUT" method="POST">
     <fieldset>
-      <legend>New User</legend>
-      <label>First Name: 
+      <label class="form-control">First Name: 
           <input 
           type="text" 
           name="firstName" 
@@ -13,8 +12,7 @@
           required 
           /> 
         </label>
-      <label
-        >Last Name: 
+      <label class="form-control">Last Name: 
         <input 
         type="text" 
         name="lastName" 
@@ -37,7 +35,7 @@
         name="workouts"
         />
       </label> -->
-      <input type="submit" value="Edit Athlete" />
+      <input class="btn btn-default" type="submit" value="Edit Athlete" />
     </fieldset>
   </form>
 </div>
