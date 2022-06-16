@@ -1,15 +1,28 @@
+:root {
+    --indigo: #133c55;
+    --gray: #e9ebe7;
+    --flame: #e4572e;
+    --ebony: #646f58;
+    --blue: #00a6ed;
+}
+
 #layout-nav {
-    background-color: rgb(250, 190, 172);
-    width: 100vw;
+    background-color: var(--indigo);
+    width: 100%;
     padding: 10px;
 }
 #layout-nav h1 {
-    color: black;
+    color: var(--gray);
+    font-size: 2em;
+}
+#layout-nav h3 {
+    color: var(--gray);
+    font-size: 1.2em;
 }
 
 body {
-    background-color: rgb(153, 178, 246);
-    color: white;
+    background-color: var(--gray);
+    color: var(--ebony);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,10 +30,15 @@ body {
 }
 
 h1 {
-    color: white;
+    margin: 15px auto;
+    color: var(--indigo);
+    font-size: 3.4em;
 }
-a {
-    color: rgb(1, 26, 89);
+
+.directions-container {
+    text-align: left;
+    margin: 10px 30px;
+    width: 70vw;
 }
 
 .flex-container {
@@ -30,5 +48,26 @@ a {
 }
 
 table {
-    background-color: rgb(187, 203, 245);
+    background-color: var(--blue);
+    /* display: flex; */
+    color: white;
+    overflow-x: auto;
+}
+
+.table-head {
+    background-color: var(--ebony);
+    color: var(--gray);
+}
+
+/*  COLORS */
+#layout-nav a {
+    color: var(--flame);
+}
+
+.blue {
+    color: var(--blue);
+}
+
+a, .btn, .btn-default {
+    color: var(--flame);
 }
