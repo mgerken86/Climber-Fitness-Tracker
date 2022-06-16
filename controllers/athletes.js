@@ -24,6 +24,7 @@ athletesRouter.get('/', (req, res) => {
     User.find({ username: req.session.username })
         .then(user => {
             Athlete.find({})
+                .populate('workouts')
                 .then(athletes => {
                     res.render('athletes/index.liquid', { athletes, user: user[0] })
                 })
@@ -79,7 +80,7 @@ athletesRouter.post('/:id', (req, res) => {
             return Athlete.findByIdAndUpdate(athleteId, { $push: { workouts: workout._id } }, { new: true })
         })
         .then(athlete => {
-            res.redirect('/workouts')
+            res.redirect(`/athletes/${athleteId}`)
         })
         .catch(error => console.log(error))
 })

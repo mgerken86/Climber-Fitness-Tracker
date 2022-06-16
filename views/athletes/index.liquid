@@ -12,7 +12,11 @@
         <td>
             <a class="btn btn-default" href="/athletes/{{ athlete._id }}">{{athlete.firstName}} {{athlete.lastName}}</a>
         </td>
-        <td>{{athlete.workouts[athlete.workouts.length-1]}}</td>
+        <td>
+            <!-- get the last workout in array to display the most current climbingGrade -->
+            {% assign latestWorkout = athlete.workouts.last %}
+            {{latestWorkout.climbingGrade}}
+        </td>
         <td>
             <form action="/athletes/{{ athlete._id }}?_method=DELETE" method="POST">
                 <input class="btn btn-default" type="submit" value="X" />

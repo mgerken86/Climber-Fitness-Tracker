@@ -5,6 +5,7 @@
             <th>Date</th>
             <th>Athlete</th>
             <th>Total Score</th>
+            <th>Climbing Grade</th>
             <th>Delete Workout</th>
             <th>More Info</th>
         </tr>
@@ -13,6 +14,7 @@
             <td>{{ workout.date }}</td>
             <td><a href="/athletes/{{workout.athlete._id}}">{{ workout.athlete.firstName }} {{workout.athlete.lastName}}</a></td>
             <td>{{ workout.totalScore }}</td>
+            <td>{{workout.climbingGrade}}</td>
                 <td>
                     <form action="/workouts/{{ workout._id }}?_method=DELETE" method="POST">
                         <input class="btn btn-default" type="submit" value="X" />
