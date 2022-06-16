@@ -73,9 +73,9 @@ athletesRouter.post('/:id', (req, res) => {
     const workout = req.body
     workout.athlete = athleteId
     workout.totalScore = Number(workout.maxFinger) + Number(workout.maxPullup) + Number(workout.core) + Number(workout.endurance)
+    workout.climbingGrade = findClimbingGrade(workout.totalScore)
     Workout.create(workout)
         .then(workout => {
-            console.log(workout)
             return Athlete.findByIdAndUpdate(athleteId, { $push: { workouts: workout._id } }, { new: true })
         })
         .then(athlete => {
@@ -110,3 +110,89 @@ athletesRouter.get('/:id', (req, res) => {
 
 // export router to server.js
 module.exports = athletesRouter
+
+
+// the function to figure out the workout's equivalent climbing grade
+function findClimbingGrade(score) {
+    switch (score) {
+        case 1:
+            return "5.10a"
+        case 2:
+            return "5.10b"
+        case 3:
+            return "5.10c"
+        case 4:
+            return "5.10d"
+        case 5:
+            return "5.11a"
+        case 6:
+            return "5.11a"
+        case 7:
+            return "5.11b"
+        case 8:
+            return "5.11b"
+        case 9:
+            return "5.11c/d"
+        case 10:
+            return "5.11c/d"
+        case 11:
+            return "5.12a"
+        case 12:
+            return "5.12a"
+        case 14:
+            return "5.12b"
+        case 15:
+            return "5.12c"
+        case 16:
+            return "5.12c"
+        case 17:
+            return "5.12d"
+        case 18:
+            return "5.12d"
+        case 19:
+            return "5.13a"
+        case 20:
+            return "5.13a"
+        case 21:
+            return "5.13b"
+        case 22:
+            return "5.13b"
+        case 23:
+            return "5.13c"
+        case 24:
+            return "5.13c"
+        case 25:
+            return "5.13d"
+        case 26:
+            return "5.13d"
+        case 27:
+            return "5.14a"
+        case 28:
+            return "5.14a"
+        case 29:
+            return "5.14b"
+        case 30:
+            return "5.14b"
+        case 31:
+            return "5.14c"
+        case 32:
+            return "5.14c"
+        case 33:
+            return "5.14d"
+        case 34:
+            return "5.14d"
+        case 35:
+            return "5.15a"
+        case 36:
+            return "5.15a"
+        case 37:
+            return "5.15b"
+        case 38:
+            return "5.15b"
+        case 39:
+            return "5.15c"
+        case 40:
+            return "5.15d"
+
+    }
+}

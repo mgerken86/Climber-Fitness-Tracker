@@ -12,7 +12,8 @@ const workoutSchema = new Schema({
     maxPullup: {type: Number, required: true},
     core: {type: Number, required: true},
     endurance: {type: Number, required: true},
-    totalScore: Number
+    totalScore: Number,
+    climbingGrade: String
 })
 
 // workout model

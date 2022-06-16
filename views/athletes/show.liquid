@@ -14,8 +14,7 @@
     {% for workout in athlete.workouts %}
     <tr>
         <td>{{workout.date}}</td>
-        <td>{{workout.maxFinger | plus: workout.maxPullup | plus:
-            workout.core | plus: workout.endurance}}</td>
+        <td>{{workout.totalScore}}</td>
         <td><a href="/workouts/{{workout._id}}">Click Here</a></td>
     </tr>
     {% endfor %}
