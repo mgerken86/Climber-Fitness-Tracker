@@ -3,6 +3,7 @@
 {% assign i = 0 %}
 <table class="table table-responsive">
     <tr class="table-heads">
+        <th>Rank</th>
         <th>Athlete</th>
         <th>Date</th>
         <th>Climbing Grade</th>
@@ -11,7 +12,8 @@
     {% for workout in workouts %}
     <tr>
         {% capture i %}{{ i | plus:1 }}{% endcapture %}
-        <td>{{ i }}. {{workout.athlete.firstName }} {{workout.athlete.lastName}}</td>
+        <td>{{ i }}.</td>
+        <td>{{workout.athlete.firstName }} {{workout.athlete.lastName}}</td>
         <td>{{workout.date }}</td>
         <td>{{workout.climbingGrade}}</td>
         <td><a href="/workouts/{{workout._id}}">Click Here</a></td>

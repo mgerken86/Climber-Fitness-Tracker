@@ -6,14 +6,14 @@
     <form action="/users/{{user._id}}?_method=PUT" method="POST">
         <fieldset>
             <label class="form-control">
-                FIRST NAME: <input type="text" name="firstName" required />
+                FIRST NAME: <input type="text" name="firstName" value="{{user.firstName}}" required />
             </label>
             <label class="form-control">
-                LAST NAME: <input type="text" name="lastName" required />
+                LAST NAME: <input type="text" name="lastName" value="{{user.lastName}}" required />
             </label>
-            <label class="form-control">
+            <!-- <label class="form-control">
                 BIRTHDAY: <input type="date" max="2020-01-01" name="birthday" />
-            </label>
+            </label> -->
             <!-- <label class="form-control">
                  TEAMS: <input type="text" name="teams" required /> 
               </label> -->
