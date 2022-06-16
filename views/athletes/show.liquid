@@ -1,5 +1,5 @@
 {% layout "layout.liquid" %} {% block content %}
-<h1> {{athlete.firstName }}</h1>
+<h1> {{athlete.firstName}} {{athlete.lastName}}</h1>
 <div class="flex-container">
     <a class="btn btn-default" href="/athletes/{{athlete._id}}/edit">Edit {{athlete.firstName}}</a>
     <a class="btn btn-default" href="/workouts/{{athlete._id}}/new">Add a new workout for {{athlete.firstName}}</a>

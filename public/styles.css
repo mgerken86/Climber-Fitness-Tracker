@@ -1,3 +1,12 @@
+#layout-nav {
+    background-color: rgb(250, 190, 172);
+    width: 100vw;
+    padding: 10px;
+}
+#layout-nav h1 {
+    color: black;
+}
+
 body {
     background-color: rgb(153, 178, 246);
     color: white;
@@ -7,8 +16,19 @@ body {
     text-align: center;
 }
 
+h1 {
+    color: white;
+}
+a {
+    color: rgb(1, 26, 89);
+}
+
 .flex-container {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+table {
+    background-color: rgb(187, 203, 245);
 }

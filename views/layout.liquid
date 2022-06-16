@@ -9,16 +9,18 @@
     <title>Climber Fitness Tracker</title>
 </head>
 <body>
+    <div id="layout-nav">
     <h1>Climber Fitness Tracker</h1>
-    <nav>
-
+    <nav class="nav justify-content-center">
+        {% if user %}
         <a class="btn btn-default" href='/users/{{user._id}}'>Home</a>
         <a class="btn btn-dafault" href="/users/{{user._id}}/update">Update My Information</a>
         <a class="btn btn-default" href="/athletes">Athletes</a>
         <a class="btn btn-default" href="/workouts">Workouts</a>
         <a class="btn btn-default" href="/users/logout">Log Out</a>
-
+        {% endif %}
     </nav>
+</div>
     <main>{% block content %} Default Content {% endblock %}</main>
 </body>
 </html>

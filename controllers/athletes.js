@@ -70,10 +70,12 @@ athletesRouter.post('/', (req, res) => {
 // create route for adding workouts to athlete
 athletesRouter.post('/:id', (req, res) => {
     const athleteId = req.params.id
-    req.body.athlete = athleteId
-    console.log(req.body)
-    Workout.create(req.body)
+    const workout = req.body
+    workout.athlete = athleteId
+    workout.totalScore = Number(workout.maxFinger) + Number(workout.maxPullup) + Number(workout.core) + Number(workout.endurance)
+    Workout.create(workout)
         .then(workout => {
+            console.log(workout)
             return Athlete.findByIdAndUpdate(athleteId, { $push: { workouts: workout._id } }, { new: true })
         })
         .then(athlete => {

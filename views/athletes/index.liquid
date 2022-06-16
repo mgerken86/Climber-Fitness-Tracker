@@ -3,18 +3,16 @@
 <a class="btn btn-default" href="/athletes/new">Add New Climber</a>
 <table class="table">
     <tr class="table-secondary">
-        <th>First</th>
-        <th>Last</th>
+        <th>Name</th>
         <th>Current Climbing Grade </th>
-        <th>See Workouts</th>
         <th>Delete</th>
     </tr>
     {% for athlete in athletes %}
     <tr>
-        <td>{{ athlete.firstName }}</td>
-        <td>{{ athlete.lastName }} </td>
+        <td>
+            <a class="btn btn-default" href="/athletes/{{ athlete._id }}">{{athlete.firstName}} {{athlete.lastName}}</a>
+        </td>
         <td>*** Climbing Grade ***</td>
-        <td><a class="btn btn-default" href="/athletes/{{ athlete._id }}">More info</a></td>
         <td>
             <form action="/athletes/{{ athlete._id }}?_method=DELETE" method="POST">
                 <input class="btn btn-default" type="submit" value="X" />

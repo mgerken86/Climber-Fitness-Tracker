@@ -1,11 +1,10 @@
 {% layout "layout.liquid" %} {% block content %}
 
-<h1>Edit YOUR Information</h1>
+<h1>Edit Your Information</h1>
 
 <div>
     <form action="/users/{{user._id}}?_method=PUT" method="POST">
         <fieldset>
-            <legend>EDIT</legend>
             <!-- <label class="form-control">
                 USERNAME: <input type="text" name="username" required />
             </label>
