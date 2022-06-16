@@ -1,10 +1,10 @@
 {% layout 'layout.liquid' %} {% block content %}
 <div class="container">
     <article>
+        <h1>Test Your Strength!</h1>
         <form action="/athletes/{{athlete._id}}" method="POST">
         <!-- <form class action="/workouts" method="POST"> -->
             <fieldset class="mb-3">
-                <legend>Test Your Strength!</legend>
                 <label class="form-label row">
                     Max Finger Strength:
                     <input class="form-control"
@@ -45,7 +45,7 @@
                     placeholder="Points scored"/>
                 </label>
             </fieldset>
-            <input type="submit" value="Record Workout" />
+            <input class="btn btn-default" type="submit" value="Record Workout" />
         </form>
     </article>
 </div>

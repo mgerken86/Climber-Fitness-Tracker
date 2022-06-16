@@ -2,15 +2,17 @@
 <div>
   <form action="/users/createUser" method="POST">
     <fieldset>
-      <legend>New User</legend>
-      <label>USERNAME: <input type="text" name="username" required /> </label>
-      <label
-        >PASSWORD: <input type="password" name="password" required />
+      <h1>New User</h1>
+      <label class="form-control">USERNAME:
+        <input type="text" name="username" required />
+      </label>
+      <label class="form-control">PASSWORD:
+        <input type="password" name="password" required />
       </label>
       <!-- <label>
         WHAT GYM DO YOU COACH AT?: <input type="text" name="gym" />
       </label> -->
-      <input type="submit" value="Create Account" />
+      <input class="btn btn-default" type="submit" value="Create Account" />
     </fieldset>
   </form>
 </div>

@@ -52,9 +52,15 @@ table {
 /*  COLORS */
 #layout-nav a {
     color: var(--flame);
+    font-weight: bold;
 }
 
 .blue {
+    color: var(--indigo);
+    font-weight: bold;
+}
+
+h4 {
     color: var(--blue);
 }
 
