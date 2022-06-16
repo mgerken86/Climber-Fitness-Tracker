@@ -12,7 +12,7 @@
         <td>
             <a class="btn btn-default" href="/athletes/{{ athlete._id }}">{{athlete.firstName}} {{athlete.lastName}}</a>
         </td>
-        <td>*** Climbing Grade ***</td>
+        <td>{{athlete.workouts[athlete.workouts.length-1]}}</td>
         <td>
             <form action="/athletes/{{ athlete._id }}?_method=DELETE" method="POST">
                 <input class="btn btn-default" type="submit" value="X" />
