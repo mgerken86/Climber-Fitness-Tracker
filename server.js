@@ -44,3 +44,5 @@ app.use('/', (req, res) => res.render('users/login.liquid'))
 // Listen Route
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`));
+
+// heroku config:set MONGODB_URI='mongodb+srv://mgerken86:12345@mark-cluster.8zwhq.mongodb.net/?retryWrites=true&w=majority'
