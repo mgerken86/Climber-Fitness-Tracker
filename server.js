@@ -42,5 +42,5 @@ app.use('/', (req, res) => res.render('users/login.liquid'))
 
 
 // Listen Route
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`));
+const PORT = process.env.PORT;
+app.listen(PORT || 3000, () => console.log(`Now Listening on port ${PORT}`));
