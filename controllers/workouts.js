@@ -24,6 +24,8 @@ workoutsRouter.get('/', (req, res) => {
     User.find({ username: req.session.username })
         .then(user => {
             Workout.find({})
+                .sort({totalScore: -1})
+                .limit(10)
                 .populate('athlete')
                 .then(workouts => {
                     res.render('workouts/index.liquid', { workouts, user: user[0] })

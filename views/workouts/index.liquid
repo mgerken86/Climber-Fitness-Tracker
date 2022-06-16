@@ -1,19 +1,21 @@
 {% layout "layout.liquid" %} {% block content %}
-    <h1>Workouts</h1>
-    <table class="table table-responsive">
-        <tr class="table-heads">
-            <th>Date</th>
-            <th>Athlete</th>
-            <th>Climbing Grade</th>
-            <th>More Info</th>
-        </tr>
-        {% for workout in workouts %}
+<h1>Top 10 Workouts Leaderboard</h1>
+{% assign i = 0 %}
+<table class="table table-responsive">
+    <tr class="table-heads">
+        <th>Date</th>
+        <th>Athlete</th>
+        <th>Climbing Grade</th>
+        <th>More Info</th>
+    </tr>
+    {% for workout in workouts %}
         <tr>
-            <td>{{ workout.date }}</td>
-            <td>{{ workout.athlete.firstName }} {{workout.athlete.lastName}}</td>
-            <td>{{workout.climbingGrade}}</td>
+            {% capture i %}{{ i | plus:1 }}{% endcapture %}
+                <td>{{ i }}. {{workout.date }}</td>
+                <td>{{workout.athlete.firstName }} {{workout.athlete.lastName}}</td>
+                <td>{{workout.climbingGrade}}</td>
                 <td><a href="/workouts/{{workout._id}}">Click Here</a></td>
         </tr>
-        {% endfor %}
-    </table>
+    {% endfor %}
+</table>
 {% endblock %}
