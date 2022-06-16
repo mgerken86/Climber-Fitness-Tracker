@@ -49,14 +49,7 @@ h1 {
 
 table {
     background-color: var(--blue);
-    /* display: flex; */
-    color: white;
     overflow-x: auto;
-}
-
-.table-head {
-    background-color: var(--ebony);
-    color: var(--gray);
 }
 
 /*  COLORS */
@@ -68,6 +61,35 @@ table {
     color: var(--blue);
 }
 
+.table-head {
+    background-color: var(--indigo);
+    color: var(--gray);
+}
+
 a, .btn, .btn-default {
     color: var(--flame);
+    font-weight: bold;
+}
+
+td {
+    color: var(--gray);
+}
+
+.form-control {
+    background-color: var(--blue);
+    padding: 20px;
+    color: var(--gray);
+    text-align: left;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+}
+input {
+    background-color: var(--gray);
+    color: var(--ebony);
+    align-self: right;
+}
+label {
+    padding: 40px 0;
 }
