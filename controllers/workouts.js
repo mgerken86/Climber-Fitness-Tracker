@@ -23,6 +23,7 @@ workoutsRouter.use((req, res, next) => {
 workoutsRouter.get('/', (req, res) => {
     User.find({ username: req.session.username })
         .then(user => {
+            //find the top 10 highest workouts recorded
             Workout.find({})
                 .sort({totalScore: -1})
                 .limit(10)
@@ -50,6 +51,7 @@ workoutsRouter.get('/:id/new', (req, res) => {
 // delete route
 workoutsRouter.delete('/:id', (req, res) => {
         Workout.findByIdAndDelete(req.params.id)
+        //delete the workout and redirect back to that athlete's show page
         .then(workout => res.redirect(`/athletes/${workout.athlete._id}`))
         .catch(error => console.log(error))
     })

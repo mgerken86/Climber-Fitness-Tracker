@@ -2,7 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require("express");
-const {User} = require("../models/user");
+const { User } = require("../models/user");
 const bcrypt = require("bcryptjs");
 
 /////////////////////////////////////////
@@ -57,51 +57,52 @@ userRouter.get('/logout', (req, res) => {
 
 // The Signup Routes (Get => form, post => submit form)
 userRouter.get('/createUser', (req, res) => {
-    res.render("users/createUser.liquid");
+  res.render("users/createUser.liquid");
 });
 
 // New User
 userRouter.post('/createUser', async (req, res) => {
-    req.body.password = await bcrypt.hash(
-        req.body.password,
-        await bcrypt.genSalt(10)
-    )
-    User.create(req.body)
+  req.body.password = await bcrypt.hash(
+    req.body.password,
+    await bcrypt.genSalt(10)
+  )
+  User.create(req.body)
     .then(user => {
-        res.redirect(`/users/${user._id}/update`)
+      req.session.username = username;
+      req.session.loggedIn = true;
+      res.redirect(`/users/${user._id}/update`)
     })
     .catch(error => {
-        console.log(error)
-        res.json({ error })
+      console.log(error)
+      res.json({ error })
     })
 });
 
 // Update User
 userRouter.put('/:id', (req, res) => {
   const userId = req.params.id
-  User.findByIdAndUpdate(userId, req.body, {new: true})
-  .then(user => {
-    req.session.loggedIn = true
-    res.redirect(`/users/${userId}`)
-  })
-  .catch(error => console.log(error))
+  User.findByIdAndUpdate(userId, req.body, { new: true })
+    .then(user => {
+      res.redirect(`/users/${userId}`)
+    })
+    .catch(error => console.log(error))
 })
 
 // Edit Route
 userRouter.get('/:id/update', (req, res) => {
   User.findById(req.params.id)
-  .then(user => res.render('users/myInfo.liquid', {user}))
-  .catch(error => console.log(error))
+    .then(user => res.render('users/myInfo.liquid', { user }))
+    .catch(error => console.log(error))
 })
-  
+
 // Show Route
 userRouter.get('/:id', (req, res) => {
   User.findById(req.params.id)
-  .populate('workouts')
-  .then(user => res.render('users/home.liquid', {user}))
+    .populate('workouts')
+    .then(user => res.render('users/home.liquid', { user }))
 })
 
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
-module.exports = {userRouter};
+module.exports = { userRouter };
