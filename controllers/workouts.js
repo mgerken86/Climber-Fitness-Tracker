@@ -47,10 +47,11 @@ workoutsRouter.get('/:id/new', (req, res) => {
 
 // delete route
 workoutsRouter.delete('/:id', (req, res) => {
-    Workout.findByIdAndDelete(req.params.id)
-        .then(workout => res.redirect('/workouts'))
+        Workout.findByIdAndDelete(req.params.id)
+        .then(workout => res.redirect(`/athletes/${workout.athlete._id}`))
         .catch(error => console.log(error))
-})
+    })
+
 
 //update route
 workoutsRouter.put('/:id', (req, res) => {

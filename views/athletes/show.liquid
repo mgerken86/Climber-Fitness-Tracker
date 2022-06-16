@@ -11,6 +11,7 @@
         <th>Total Score</th>
         <th>Climbing Grade</th>
         <th>More About This Workout</th>
+        <th>Delete This Workout</th>
     </tr>
     {% for workout in athlete.workouts %}
     <tr>
@@ -18,6 +19,11 @@
         <td>{{workout.totalScore}}</td>
         <td>{{workout.climbingGrade}}</td>
         <td><a href="/workouts/{{workout._id}}">Click Here</a></td>
+        <td>
+            <form action="/workouts/{{ workout._id }}?_method=DELETE" method="POST">
+                <input class="btn btn-default" type="submit" value="X" />
+            </form>
+        </td>   
     </tr>
     {% endfor %}
 </table>

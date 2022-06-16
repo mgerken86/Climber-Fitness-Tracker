@@ -23,7 +23,7 @@ athletesRouter.use((req, res, next) => {
 athletesRouter.get('/', (req, res) => {
     User.find({ username: req.session.username })
         .then(user => {
-            Athlete.find({})
+            Athlete.find({coach: req.session.username})
                 .populate('workouts')
                 .then(athletes => {
                     res.render('athletes/index.liquid', { athletes, user: user[0] })
@@ -61,6 +61,7 @@ athletesRouter.put('/:id', (req, res) => {
 // create route
 athletesRouter.post('/', (req, res) => {
     const athlete = req.body
+    athlete.coach = req.session.username
     Athlete.create(athlete)
         .then(athlete => {
             res.redirect('/athletes')

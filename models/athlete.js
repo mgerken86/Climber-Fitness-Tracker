@@ -11,7 +11,8 @@ const athletesSchema = new Schema({
     lastName: { type: String, required: true},
     birthday: {type: Date, max: Date.now},
     img: String,
-    workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}]
+    workouts: [{type: Schema.Types.ObjectId, ref: 'Workout'}],
+    coach: String
 })
 //Instance Methods
 // athletesSchema.methods.getFullName = function() {
