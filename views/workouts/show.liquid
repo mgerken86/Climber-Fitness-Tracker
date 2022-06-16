@@ -1,5 +1,6 @@
 {% layout "layout.liquid" %} {% block content %}
-<h1>{{workout.athlete.firstName}}'s Workout On {{workout.date}}</h1>
+<h1>{{workout.athlete.firstName}}'s Workout</h1>
+<h2>On {{workout.date}}</h2>
 
 <table class="table">
     <tr class="table-head">
@@ -9,10 +10,10 @@
         <th>Endurance</th>
     </tr>
     <tr>
-        <th>{{workout.maxFinger}}</th>
-        <th>{{workout.maxPullup}}</th>
-        <th>{{workout.endurance}}</th>
-        <th>{{workout.core}}</th>
+        <td>{{workout.maxFinger}}</td>
+        <td>{{workout.maxPullup}}</td>
+        <td>{{workout.endurance}}</td>
+        <td>{{workout.core}}</td>
     </tr>
 </table>
     <h2>Total Score:
