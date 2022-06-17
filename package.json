@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mgerken86/Climber-Fitness-Tracker#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.1",
@@ -32,6 +33,7 @@
     "moment": "^2.29.3",
     "mongoose": "^6.3.6",
     "morgan": "^1.10.0",
+    "node-fetch": "^3.2.6",
     "path": "^0.12.7"
   }
 }

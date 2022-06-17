@@ -2,6 +2,7 @@ const express = require('express')
 const Athlete = require('../models/athlete')
 const Workout = require('../models/workout')
 const { User } = require('../models/user')
+const axios = require('axios')
 
 // CREATE ROUTE
 
@@ -84,12 +85,35 @@ workoutsRouter.get('/:id/edit', (req, res) => {
 })
 
 // show route
+// workoutsRouter.get('/:id', (req, res) => {
+//     User.find({ username: req.session.username })
+//         .then(user => {
+//             Workout.findById(req.params.id)
+//                 .populate('athlete')
+//                 .then(workout => {
+
+//                     res.render('workouts/show.liquid', { workout, user: user[0] })
+//                 })
+//                 .catch(error => console.log(error))
+//         .catch(error => console.log(error))
+//         })
+// })
+const redditObject = {}
 workoutsRouter.get('/:id', (req, res) => {
     User.find({ username: req.session.username })
         .then(user => {
             Workout.findById(req.params.id)
                 .populate('athlete')
-                .then(workout => res.render('workouts/show.liquid', { workout, user: user[0] }))
+                .then(workout => {
+                    axios.get(`https://www.reddit.com/r/climbing/search.json?q=${workout.climbingGrade}`)
+                    .then(data => {
+                        allRedditPosts = data.data.data.children
+                        randomPost = allRedditPosts[Math.floor(Math.random() * allRedditPosts.length - 1)]
+                        redditObject.title = randomPost.data.title
+                        redditObject.pic = randomPost.data.thumbnail
+                    })
+                    res.render('workouts/show.liquid', { workout, user: user[0], redditObject })
+                })
                 .catch(error => console.log(error))
         .catch(error => console.log(error))
         })

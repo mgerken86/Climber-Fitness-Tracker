@@ -5,6 +5,7 @@
 <div>
     <form action="/users/{{user._id}}?_method=PUT" method="POST">
         <fieldset>
+            <legend>My Info</legend>
             <label class="form-control">
                 FIRST NAME: <input type="text" name="firstName" value="{{user.firstName}}" required />
             </label>

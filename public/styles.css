@@ -15,7 +15,9 @@
     background-color: var(--indigo);
     width: 100%;
     padding: 10px;
+    margin: 0;
 }
+
 #layout-nav h1 {
     color: var(--gray);
     font-size: 2em;
@@ -37,7 +39,7 @@ h1 {
     font-family: 'Tiro Telugu', serif;
     margin: 30px auto 20px;
     color: var(--indigo);
-    font-size: 3.4em;
+    font-size: 3em;
 }
 
 .directions-container {
