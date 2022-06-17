@@ -7,11 +7,11 @@ Welcome to COACHES CORNER, a quick and easy way to score your athletes in 4 diff
 
 ## Technologies used:
 
--Node
--MongoDB
--Express
--Mongoose
--Liquid
+-Node <br>
+-MongoDB <br>
+-Express <br>
+-Mongoose <br>
+-Liquid <br>
 -CSS / Bootstrap
 
 
