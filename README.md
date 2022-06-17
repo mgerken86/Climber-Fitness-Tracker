@@ -1,6 +1,9 @@
-# Climber-Fitness-Tracker
+# Coaches Corner
+https://coachescorner.herokuapp.com/
 
-The Climber Fitness Tracker is a way to store and access workout data for climbing workouts. Coaches will be able to view all athletes' workout data, and each athlete will be able to see their own workouts. 
+Are you a climbing coach or personal trainer who's constantly asked by your athletes, "What grade do you think I'm strong enough to climb?"
+
+Welcome to COACHES CORNER, a quick and easy way to score your athletes in 4 different benchmarks, which converts the total score of the benchmarks into a climbing grade.
 
 ## Technologies used:
 
@@ -8,7 +11,8 @@ The Climber Fitness Tracker is a way to store and access workout data for climbi
 -MongoDB
 -Express
 -Mongoose
--CSS
+-Liquid
+-CSS / Bootstrap
 
 
 ## The users will be able to:
@@ -19,8 +23,12 @@ Coaches will be authorized to view all of their athletes' workouts. They can vie
 
 
 ## The Wireframes:
-
-![](public/images/Project2-wireframes.jpg)
+Home Page
+![](public/images/Home Page.png)
+Workout Show Page
+![](public/images/Workout Show Page.png)
+Athletes Index Page
+![](public/images/Athletes Index Page.png)
 
 
 ## The ERD: 
@@ -83,11 +91,6 @@ Coaches will be able to sign up / sign in and view all athletes and their indivi
 
 ## Stretch Goals:
 
-Have 3 different types of workouts:
-    [] Strength benchmarks
-    [] Physical measurements
-    [] Training log
-
 Create a tracker that visualizes benchmark progress (graph, chart, etc). Alerts coach if 1 of the 4 benchmarks has decreased by a certain percentage
 
 Make it possible for athletes to share their benchmarks with other athletes if they want to
@@ -95,8 +98,5 @@ Make it possible for athletes to share their benchmarks with other athletes if t
 Arrange athletes by teams to make it easier for coaches to organize them
 
 Make it easy to search for individual athletes
-
-Use an API to get the athlete's membership info? Get their image?
- Use an API to get gym info from google maps?
 
 Make it possible for coaches to send athletes individual messages

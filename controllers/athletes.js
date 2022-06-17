@@ -117,6 +117,8 @@ module.exports = athletesRouter
 // the function to figure out the workout's equivalent climbing grade
 function findClimbingGrade(score) {
     switch (score) {
+        case 0:
+            return "5.9"
         case 1:
             return "5.10a"
         case 2:
