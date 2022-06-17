@@ -24,11 +24,11 @@ Coaches will be authorized to view all of their athletes' workouts. They can vie
 
 ## The Wireframes:
 Home Page
-![](public/images/Home Page.png)
+![](public/images/Home_Page.png)
 Workout Show Page
-![](public/images/Workout Show Page.png)
+![](public/images/Workout_Show_Page.png)
 Athletes Index Page
-![](public/images/Athletes Index Page.png)
+![](public/images/Athletes_Index_Page.png)
 
 
 ## The ERD: 
