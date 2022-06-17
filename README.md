@@ -24,9 +24,9 @@ Coaches will be authorized to view all of their athletes' workouts. They can vie
 
 ## The Wireframes:
 Home Page <br>
-![](public/images/Home_Page.png)
+![](public/images/Home_Page.png)<br>
 Workout Show Page <br>
-![](public/images/Workout_Show_Page.png)
+![](public/images/Workout_Show_Page.png)<br>
 Athletes Index Page <br>
 ![](public/images/Athletes_Index_Page.png)
 
