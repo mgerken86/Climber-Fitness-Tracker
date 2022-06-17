@@ -84,35 +84,25 @@ workoutsRouter.get('/:id/edit', (req, res) => {
         .catch(error => console.log(error))
 })
 
-// show route
-// workoutsRouter.get('/:id', (req, res) => {
-//     User.find({ username: req.session.username })
-//         .then(user => {
-//             Workout.findById(req.params.id)
-//                 .populate('athlete')
-//                 .then(workout => {
-
-//                     res.render('workouts/show.liquid', { workout, user: user[0] })
-//                 })
-//                 .catch(error => console.log(error))
-//         .catch(error => console.log(error))
-//         })
-// })
+// the object that gets passed to the Liquid page with a climbing Reddit post
 const redditObject = {}
+// show route
 workoutsRouter.get('/:id', (req, res) => {
     User.find({ username: req.session.username })
         .then(user => {
             Workout.findById(req.params.id)
                 .populate('athlete')
                 .then(workout => {
-                    axios.get(`https://www.reddit.com/r/climbing/search.json?q=${workout.climbingGrade}`)
+                    // leaving this other API commented out here just in case. I think the ClimbingPorn reddit search is better, but they're both good
+                    // axios.get(`https://www.reddit.com/r/climbing/search.json?q=${workout.climbingGrade}`)
+                    axios.get(`https://www.reddit.com/r/ClimbingPorn/search.json?q=${workout.climbingGrade}`)
                     .then(data => {
                         allRedditPosts = data.data.data.children
-                        randomPost = allRedditPosts[Math.floor(Math.random() * allRedditPosts.length - 1)]
+                        randomPost = allRedditPosts[Math.floor(Math.random() * allRedditPosts.length)]
                         redditObject.title = randomPost.data.title
-                        redditObject.pic = randomPost.data.thumbnail
+                        redditObject.img = randomPost.data.thumbnail
+                        res.render('workouts/show.liquid', { workout, user: user[0], redditObject })
                     })
-                    res.render('workouts/show.liquid', { workout, user: user[0], redditObject })
                 })
                 .catch(error => console.log(error))
         .catch(error => console.log(error))
@@ -120,6 +110,6 @@ workoutsRouter.get('/:id', (req, res) => {
 })
 
 
-
 // export router to server.js
 module.exports = workoutsRouter
+

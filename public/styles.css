@@ -60,7 +60,13 @@ table {
     overflow-x: auto;
 }
 
-/*  COLORS */
+.workout-img {
+    /* width: 40%;
+    height: 40%; */
+}
+
+
+/*  ******* COLORS ******* */
 #layout-nav a {
     color: var(--flame);
     font-weight: bold;
