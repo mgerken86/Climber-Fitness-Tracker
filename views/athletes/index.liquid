@@ -1,5 +1,7 @@
 {% layout "layout.liquid" %} {% block content %}
 <h1>My Athletes</h1>
+<a class="btn btn-default" href="/athletes/new">Add New Climber</a>
+<br>
 <table class="table table-responsive">
     <tr class="table-head">
         <th>Name</th>
@@ -24,5 +26,4 @@
     </tr>
     {% endfor %}
 </table>
-<a class="btn btn-default" href="/athletes/new">Add New Climber</a>
 {% endblock %}
