@@ -1,21 +1,25 @@
 {% layout "layout.liquid" %}
 {% block content %}
-      <div>
-        <form action="/users/login" method="POST">
-          <fieldset>
-            <h1>User Login</h1>
-            <label class="form-control">
-              USERNAME: <input type="text" name="username" required />
-            </label>
-            <label class="form-control">
-              PASSWORD: <input type="password" name="password" required />
-            </label>
-            <input class ="btn btn-default" type="submit" value="Login" />
-          </fieldset>
-        </form>
-      </div>
+<h1>User Login</h1>
+<div class="login-container">
+  <img class="login-img" src="/images/climbing1.jpeg" alt="">
+  <div class="form-container">
+  <form class="login-form" action="/users/login" method="POST">
+    <fieldset>
+      <label class="form-control">
+        USERNAME: <input type="text" name="username" required />
+      </label>
+      <label class="form-control">
+        PASSWORD: <input type="password" name="password" required />
+      </label>
       <br>
-      <div>
-        <h3>Not Registered Yet? </h3><a class="btn btn-default" href="/users/createUser">Register Here</a>
-      </div>
+      <input class="btn btn-default login-btn" type="submit" value="Login" />
+    </fieldset>
+  </form>
+</div>
+</div>
+<br>
+<div>
+  <h3>Not Registered Yet? </h3><a class="btn btn-default" href="/users/createUser">Register Here</a>
+</div>
 {% endblock %}
