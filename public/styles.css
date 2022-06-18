@@ -46,9 +46,9 @@ main {
     justify-content: center;
 }
 
-table {
+.table {
     background-color: var(--blue);
-    width: 90vw;
+    /* width: 90vw; */
     overflow-x: auto;
 }
 
@@ -149,7 +149,7 @@ h4 {
     margin: 0 .6em;
     font-size: 1em;
     padding: 3px;
-    border: 2px solid var(--gray);
+    border: 1px solid var(--ebony);
 }
 
 /* RESPONSIVENESS FOR MOBILE DEVICES */
@@ -177,6 +177,9 @@ h4 {
     }
     .title-container {
         width: 60vw;
+    }
+    .table {
+        font-size: .9em;
     }
 }
 
