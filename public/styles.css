@@ -50,6 +50,7 @@ main {
     background-color: var(--blue);
     /* width: 90vw; */
     overflow-x: auto;
+    border: 2px solid var(--indigo);
 }
 
 h1 {
