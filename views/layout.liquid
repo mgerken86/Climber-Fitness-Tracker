@@ -13,19 +13,19 @@
 
 <body>
     <div id="layout-nav">
-        <img class="nav-gif" src="/images/logo-gif.gif" alt="Logo Gif">
-        <section class="title-container">
+        <img class="nav-gif" src="/images/nav.gif" alt="Logo Gif">
+        <div class="title-container">
             <h1>Coaches Corner: A Climbing Tracker</h1>
-        </section>
-        <nav class="nav justify-content-center">
-            {% if user %}
-            <a class="btn btn-default" href='/users/{{user._id}}'>Home</a>
-            <a class="btn btn-dafault" href="/users/{{user._id}}/update">Update My Information</a>
-            <a class="btn btn-default" href="/athletes">My Athletes</a>
-            <a class="btn btn-default" href="/workouts">Workouts</a>
-            <a class="btn btn-default" href="/users/logout">Log Out</a>
-            {% endif %}
-        </nav>
+            <nav id="nav-container">
+                {% if user %}
+                <a class="btn btn-default" href='/users/{{user._id}}'>Home</a>
+                <a class="btn btn-dafault" href="/users/{{user._id}}/update">Update Me</a>
+                <a class="btn btn-default" href="/athletes">My Athletes</a>
+                <a class="btn btn-default" href="/workouts">Workouts</a>
+                <a class="btn btn-default" href="/users/logout">Log Out</a>
+                {% endif %}
+            </nav>
+        </div>
     </div>
     <main>{% block content %} Default Content {% endblock %}</main>
 </body>
