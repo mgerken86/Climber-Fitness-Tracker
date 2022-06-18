@@ -15,7 +15,7 @@ const workoutSchema = new Schema({
     totalScore: Number,
     climbingGrade: String
 })
-
+ 
 // workout model
 const Workout = model('Workout', workoutSchema)
 

@@ -14,14 +14,6 @@
     box-sizing: border-box;
 }
 
-#layout-nav {
-    font-family: 'Cairo', sans-serif;
-    background-color: var(--indigo);
-    width: 100%;
-    padding: 10px;
-    margin: 0;
-}
-
 #layout-nav h1 {
     color: var(--gray);
     font-size: 2em;
@@ -89,6 +81,20 @@ h4 {
     color: var(--gray);
 }
 
+
+/* Nav Containers */
+
+#layout-nav {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--indigo);
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+}
+
+
+
+/* Liquid Page containers */
 
 .directions-container {
     text-align: left;

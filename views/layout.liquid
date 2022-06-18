@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coaches Corner</title>
 </head>
+
 <body>
     <div id="layout-nav">
-    <h1>Coaches Corner: A Climbing Tracker</h1>
-    <nav class="nav justify-content-center">
-        {% if user %}
-        <a class="btn btn-default" href='/users/{{user._id}}'>Home</a>
-        <a class="btn btn-dafault" href="/users/{{user._id}}/update">Update My Information</a>
-        <a class="btn btn-default" href="/athletes">My Athletes</a>
-        <a class="btn btn-default" href="/workouts">Workouts</a>
-        <a class="btn btn-default" href="/users/logout">Log Out</a>
-        {% endif %}
-    </nav>
-</div>
+        <section class="title-container">
+            <h1>Coaches Corner:</h1>
+            <img class="logo-gif" src="/images/logo-gif.gif" alt="Logo Gif">
+            <h1>A Climbing Tracker</h1>
+        </section>
+        <nav class="nav justify-content-center">
+            {% if user %}
+            <a class="btn btn-default" href='/users/{{user._id}}'>Home</a>
+            <a class="btn btn-dafault" href="/users/{{user._id}}/update">Update My Information</a>
+            <a class="btn btn-default" href="/athletes">My Athletes</a>
+            <a class="btn btn-default" href="/workouts">Workouts</a>
+            <a class="btn btn-default" href="/users/logout">Log Out</a>
+            {% endif %}
+        </nav>
+    </div>
     <main>{% block content %} Default Content {% endblock %}</main>
 </body>
+
 </html>
