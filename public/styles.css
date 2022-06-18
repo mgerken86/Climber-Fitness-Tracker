@@ -121,7 +121,8 @@ h4 {
     flex: 1;
     height: 20vh;
     flex-shrink: 2;
-    min-width: 20vw;
+    min-width: 25vw;
+    width: 100%;
 }
 
 .title-container {
@@ -152,9 +153,18 @@ h4 {
 
 /* RESPONSIVENESS FOR MOBILE DEVICES */
 
-@media only screen and (max-width: 450px) {
+@media screen and (max-width: 700px) {
+    .login-container {
+        width: 90vw;
+    }
+    .login-img {
+        width: 45vw;
+    }
+    .login-form {
+        width: 45vw;
+    }
     .nav-gif {
-
+        width: 50vw;
     }
 }
 
