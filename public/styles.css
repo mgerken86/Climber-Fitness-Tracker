@@ -20,7 +20,7 @@
 body {
     font-family: 'Catamaran', sans-serif;
     font-size: 1.1em;
-    background: linear-gradient(90deg, #d5d8d2, white, #d5d8d2);
+    background: linear-gradient(90deg, var(--gray), white, var(--gray));
     color: var(--ebony);
     display: flex;
     flex-direction: column;
