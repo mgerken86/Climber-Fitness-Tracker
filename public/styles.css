@@ -14,12 +14,9 @@
     box-sizing: border-box;
 }
 
-#layout-nav h1 {
-    color: var(--gray);
-    font-size: 2em;
-    margin: 10px;
-}
+/* ***** CONTAINERS ***** */
 
+/* Main  */
 body {
     font-family: 'Catamaran', sans-serif;
     font-size: 1.1em;
@@ -29,6 +26,26 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+/* Liquid Page containers */
+
+.directions-container {
+    text-align: left;
+    margin: 10px 30px;
+    width: 80vw;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    background-color: var(--blue);
+    width: 90vw;
+    overflow-x: auto;
 }
 
 h1 {
@@ -42,8 +59,6 @@ h4 {
     text-align: center;
     margin: 20px;
 }
-
-/* ***** CONTAINERS ***** */
 
 /* log-in container */
 .login-container {
@@ -85,33 +100,28 @@ h4 {
 /* Nav Containers */
 
 #layout-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
     font-family: 'Cairo', sans-serif;
     background-color: var(--indigo);
     width: 100%;
     padding: 10px;
     margin: 0;
 }
-
-
-
-/* Liquid Page containers */
-
-.directions-container {
-    text-align: left;
-    margin: 10px 30px;
-    width: 80vw;
-}
-
-.flex-container {
+.title-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.nav-gif {
+    height: 15vh;
 }
 
-table {
-    background-color: var(--blue);
-    width: 90vw;
-    overflow-x: auto;
+#layout-nav h1 {
+    color: var(--gray);
+    font-size: 2em;
+    margin: 10px;
 }
 
 /* ***** BUTTONS AND ANCHOR TAGS ****** */
