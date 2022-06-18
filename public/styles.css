@@ -20,7 +20,7 @@
 body {
     font-family: 'Catamaran', sans-serif;
     font-size: 1.1em;
-    background-color: var(--gray);
+    background: linear-gradient(90deg, #d5d8d2, white, #d5d8d2);
     color: var(--ebony);
     display: flex;
     flex-direction: column;
@@ -111,7 +111,7 @@ h4 {
     position: fixed;
     top: 0;
     font-family: 'Cairo', sans-serif;
-    background-color: var(--indigo);
+    background: linear-gradient(var(--indigo), #1d5d85, var(--indigo)) ;
     height: 20vh;
     width: 100%;
     padding: 10px 0;
