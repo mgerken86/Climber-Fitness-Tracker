@@ -147,7 +147,7 @@ h4 {
 }
 #nav-container a {
     margin: 0 .6em;
-    font-size: .8em;
+    font-size: 1em;
     padding: 3px;
     border: 2px solid var(--gray);
 }
@@ -164,8 +164,13 @@ h4 {
     .login-form {
         width: 45vw;
     }
-    .nav-gif {
-        width: 50vw;
+    .title-container h1 {
+        font-size: 1.5em;
+    }
+    #nav-container a {
+        font-size: .7em;
+        padding: 0;
+        margin: 0 .3em;
     }
 }
 
