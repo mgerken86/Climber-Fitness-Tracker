@@ -2,6 +2,10 @@
 <h1>{{workout.athlete.firstName}}'s Workout</h1>
 <h2>On {{workout.date}}</h2>
 
+<h2>Here's a {{workout.climbingGrade}} that {{workout.athlete.firstName}} has enough fitness for:</h2>
+    <p>{{redditObject.title}}</p>
+    <img class="workout-img" src="{{redditObject.img}}" alt="">
+    <br><br>
 <table class="table table-responsive">
     <tr class="table-head">
         <th>Finger Strength</th>
@@ -19,9 +23,7 @@
     <h2>Total Score:
         {{workout.totalScore}}
     </h2>
-    <br>
-    <h2>Here's a {{workout.climbingGrade}} that {{workout.athlete.firstName}} has enough fitness for:</h2>
-    <p>{{redditObject.title}}</p>
-    <img class="workout-img" src="{{redditObject.img}}" alt="">
+   
+    
 
 {% endblock %}
